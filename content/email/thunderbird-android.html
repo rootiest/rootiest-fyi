@@ -1,0 +1,33 @@
+<!-- title: Thunderbird for Android -->
+<!-- description: Set up Rootiest Mail on an Android phone or tablet with Thunderbird for Android. -->
+<!-- order: 70 -->
+
+<p>Thunderbird for Android is a free, open-source mail app from the people who make Thunderbird. Get it from the <a href="https://play.google.com/store/apps/details?id=net.thunderbird.android">Play Store</a> or <a href="https://f-droid.org/packages/net.thunderbird.android/">F-Droid</a>.</p>
+
+<p>Before you start, <a href="../app-passwords/">make an app password</a> for your phone. The easiest way is to do it on a computer and type it in on the phone, or make it in the phone's browser and copy it from there.</p>
+
+<h2>Add your account</h2>
+<ol>
+  <li>Open Thunderbird. The first time, tap <strong>Get started</strong>. If you already have an account in it, open the menu, go to <strong>Settings</strong> and tap <strong>Add account</strong>.</li>
+  <li>Enter your address, <code>you@rootiest.org</code>, and tap <strong>Next</strong>.</li>
+  <li>Thunderbird looks up the settings and shows the servers it found, with <code>mx.rootiest.dev</code> for both incoming and outgoing mail. Tap <strong>Next</strong>.</li>
+  <li>Paste your app password and tap <strong>Next</strong> (or <strong>Sign in</strong>).</li>
+  <li>Fill in your name as you want people to see it, and give the account a name if you like. Tap <strong>Next</strong>, then <strong>Done</strong> on the last screen.</li>
+</ol>
+
+<figure class="shot" data-shot="thunderbird-android-address"><img src="../shots/thunderbird-android-address.png" alt="Thunderbird for Android asking for an email address, with a rootiest.org address typed in."><figcaption>Start with just your address.</figcaption></figure>
+
+<figure class="shot" data-shot="thunderbird-android-found"><img src="../shots/thunderbird-android-found.png" alt="Thunderbird for Android showing the incoming and outgoing servers it found on mx.rootiest.dev."><figcaption>The settings it found. Nothing to change here.</figcaption></figure>
+
+<figure class="shot" data-shot="thunderbird-android-password"><img src="../shots/thunderbird-android-password.png" alt="Thunderbird for Android asking for the password, with the box filled but hidden."><figcaption>This is where the app password goes.</figcaption></figure>
+
+<p>The exact wording on these screens changes a bit between versions, but the steps are the same: address, check the settings, app password, your name.</p>
+
+<h2>If it can't find the settings</h2>
+<p>Choose to set the account up manually and use the <a href="../setup/#manual-settings">manual settings</a>: IMAP on <code>mx.rootiest.dev</code> port 993 with SSL/TLS, and SMTP on <code>mx.rootiest.dev</code> port 465 with SSL/TLS. The username is your full address both times.</p>
+
+<h2>Calendars and contacts</h2>
+<p>Thunderbird for Android only does mail. To sync your calendars and contacts with your phone's own Calendar and Contacts apps, use DAVx⁵. See <a href="../calendars-contacts/#android">Calendars and contacts</a>.</p>
+
+<h2>Getting new mail quickly</h2>
+<p>If new mail shows up late, open the account's settings and make sure push is on for your inbox. Android's battery saving can also hold the app back, so you may need to allow Thunderbird to run in the background in your phone's battery settings.</p>

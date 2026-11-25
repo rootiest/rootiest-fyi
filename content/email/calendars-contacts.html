@@ -1,0 +1,49 @@
+<!-- title: Calendars and contacts -->
+<!-- description: Keep your calendars and contacts in sync with CalDAV and CardDAV, and which apps can do it. -->
+<!-- order: 100 -->
+
+<p>Your Rootiest Mail account comes with a calendar and an address book on the server. Connect them to your devices and anything you add on one shows up on the others.</p>
+
+<p>Apps connect to them with two standards: <strong>CalDAV</strong> for calendars and <strong>CardDAV</strong> for contacts. Like mail apps, they sign in with your full address and an <a href="../app-passwords/">app password</a>.</p>
+
+<table>
+  <thead>
+    <tr><th>What</th><th>Address</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Calendars (CalDAV)</td><td><code>https://mx.rootiest.dev/dav/cal/</code></td></tr>
+    <tr><td>Contacts (CardDAV)</td><td><code>https://mx.rootiest.dev/dav/card/</code></td></tr>
+    <tr><td>Server name, for apps that only ask for that</td><td><code>mx.rootiest.dev</code></td></tr>
+  </tbody>
+</table>
+
+<h2>Which apps can do it</h2>
+<table>
+  <thead>
+    <tr><th>App</th><th>Calendars</th><th>Contacts</th><th>How</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Thunderbird (computer)</td><td>Yes</td><td>Yes</td><td><a href="../thunderbird/">Thunderbird guide</a></td></tr>
+    <tr><td>iPhone, iPad and Mac</td><td>Yes</td><td>Yes</td><td><a href="../apple/">Apple guide</a>, built in</td></tr>
+    <tr><td>Android</td><td>Yes</td><td>Yes</td><td><a href="#android">DAVx⁵</a>, below</td></tr>
+    <tr><td>Webmail</td><td>No</td><td>Yes</td><td>Already connected, see <a href="../webmail/">Webmail</a></td></tr>
+    <tr><td>Outlook</td><td>No</td><td>No</td><td>Outlook can't connect to CalDAV or CardDAV</td></tr>
+  </tbody>
+</table>
+
+<h2 id="android">Android with DAVx⁵</h2>
+<p>Android doesn't do CalDAV or CardDAV by itself. DAVx⁵ fills that gap: it syncs your Rootiest calendars and contacts into the phone's own Calendar and Contacts apps, so they work with whatever calendar app you already use. It's free on <a href="https://f-droid.org/packages/at.bitfire.davdroid/">F-Droid</a> and costs a few dollars on the <a href="https://play.google.com/store/apps/details?id=at.bitfire.davdroid">Play Store</a>.</p>
+<ol>
+  <li><a href="../app-passwords/">Make an app password</a> for it (or reuse your phone's mail app password).</li>
+  <li>Open DAVx⁵ and tap <strong>+</strong> to add an account.</li>
+  <li>Choose <strong>Login with URL and user name</strong>.</li>
+  <li>Set <strong>Base URL</strong> to <code>https://mx.rootiest.dev/</code>, <strong>User name</strong> to your full address, and <strong>Password</strong> to the app password. Tap <strong>Login</strong>.</li>
+  <li>DAVx⁵ finds your calendars and address books. Tap <strong>Create account</strong>.</li>
+  <li>On the <strong>CardDAV</strong> and <strong>CalDAV</strong> tabs, tick the address books and calendars you want to sync.</li>
+</ol>
+<figure class="shot" data-shot="davx5-login"><img src="../shots/davx5-login.png" alt="DAVx5's login screen with the base URL https://mx.rootiest.dev/ and a rootiest.org user name filled in."><figcaption>Use <strong>Login with URL and user name</strong>.</figcaption></figure>
+<p>Give Android's battery saving a pass for DAVx⁵ if it asks, otherwise it may not sync in the background.</p>
+
+<h2>Other apps</h2>
+<p>Most calendar and contacts apps with a CalDAV or CardDAV option will work. Give them the addresses in the table at the top, your full address as the username, and an app password. If an app only asks for a server, use <code>mx.rootiest.dev</code>.</p>
+

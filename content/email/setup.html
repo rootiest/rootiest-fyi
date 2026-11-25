@@ -1,0 +1,61 @@
+<!-- title: Setting up a mail app -->
+<!-- description: Automatic setup, and every server setting you need to set up any mail app by hand. -->
+<!-- order: 50 -->
+
+<p>Any mail app that speaks IMAP can use Rootiest Mail. Before you start, <a href="../app-passwords/">make an app password</a> for the app. You'll paste it in wherever the app asks for a password.</p>
+
+<h2>Step-by-step guides</h2>
+<ul>
+  <li><a href="../thunderbird/">Thunderbird</a> on Windows, Mac or Linux</li>
+  <li><a href="../thunderbird-android/">Thunderbird for Android</a></li>
+  <li><a href="../apple/">Apple Mail</a> on iPhone, iPad and Mac</li>
+  <li><a href="../outlook/">Outlook</a></li>
+</ul>
+<p>For any other app, the settings below are all you need.</p>
+
+<h2>Automatic setup</h2>
+<p>Thunderbird and Outlook can look up the settings on their own. Type your address and app password, and they fill in the rest. When they do, they'll show the provider as <strong>rootiest.org</strong>. That's normal.</p>
+<p>Other apps try to guess the server names and usually guess wrong. If an app says it can't find the settings or can't connect, switch to manual setup and use the table below.</p>
+
+<h2 id="manual-settings">Manual settings</h2>
+<table>
+  <thead>
+    <tr><th>Setting</th><th>Incoming mail (IMAP)</th><th>Outgoing mail (SMTP)</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Server</td><td><code>mx.rootiest.dev</code></td><td><code>mx.rootiest.dev</code></td></tr>
+    <tr><td>Port</td><td><code>993</code></td><td><code>465</code></td></tr>
+    <tr><td>Security</td><td>SSL/TLS</td><td>SSL/TLS</td></tr>
+    <tr><td>Username</td><td>your full address, like <code>you@rootiest.org</code></td><td>your full address</td></tr>
+    <tr><td>Password</td><td>your app password</td><td>the same app password</td></tr>
+    <tr><td>Authentication</td><td>Normal password</td><td>Normal password</td></tr>
+  </tbody>
+</table>
+
+<aside class="note">
+  <p>Note that the server is <code>mx.rootiest.dev</code>, with <strong>.dev</strong>, even though your address ends in <strong>.org</strong>. Names like <code>mail.rootiest.org</code> or <code>imap.rootiest.org</code> don't work.</p>
+</aside>
+
+<h3>Things that trip people up</h3>
+<ul>
+  <li><strong>Use SSL/TLS, not STARTTLS.</strong> Some apps suggest port 587 with STARTTLS for outgoing mail. That port isn't open here, so pick SSL/TLS on port 465 instead.</li>
+  <li><strong>The outgoing server needs a login too.</strong> Some apps mark the outgoing username and password as optional. Fill them in anyway, or sending fails.</li>
+  <li><strong>IMAP, not POP.</strong> POP isn't offered. IMAP keeps your mail on the server, so every device sees the same thing.</li>
+  <li>Messages can be up to 100 MB. Most other providers refuse anything much over 25 MB though, so share big files another way.</li>
+</ul>
+
+<h2>Calendars, contacts and JMAP</h2>
+<table>
+  <thead>
+    <tr><th>What</th><th>Address</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Calendars (CalDAV)</td><td><code>https://mx.rootiest.dev/dav/cal/</code></td></tr>
+    <tr><td>Contacts (CardDAV)</td><td><code>https://mx.rootiest.dev/dav/card/</code></td></tr>
+    <tr><td>JMAP</td><td><code>https://mail.rootiest.dev/.well-known/jmap</code></td></tr>
+  </tbody>
+</table>
+<p>They use the same username (your full address) and an app password. If an app only asks for a server name, try <code>mx.rootiest.dev</code>. See <a href="../calendars-contacts/">Calendars and contacts</a> for which apps to use.</p>
+
+<h3>About JMAP</h3>
+<p>JMAP is a newer way for apps to talk to a mail server. It's faster than IMAP and covers mail, calendars and contacts in one go. Only a handful of apps support it so far, so if you don't know whether you need it, you don't. If your app does support it, give it your address and an app password and it should find the server from the JMAP address above.</p>

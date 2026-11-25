@@ -1,0 +1,61 @@
+<!-- title: Apple Mail -->
+<!-- description: Set up Rootiest Mail, calendars and contacts on an iPhone, iPad or Mac. -->
+<!-- order: 80 -->
+
+<p>Apple's apps can't find the Rootiest Mail settings on their own, so you'll type in the server name once. It only takes a minute. Before you start, <a href="../app-passwords/">make an app password</a> for the device.</p>
+
+<h2 id="iphone">iPhone and iPad</h2>
+<ol>
+  <li>Open <strong>Settings</strong> → <strong>Apps</strong> → <strong>Mail</strong> → <strong>Mail Accounts</strong> → <strong>Add Account</strong>. (On iOS 17 and older it's <strong>Settings</strong> → <strong>Mail</strong> → <strong>Accounts</strong> → <strong>Add Account</strong>.)</li>
+  <li>Tap <strong>Other</strong>, then <strong>Add Mail Account</strong>.</li>
+  <li>Fill in your <strong>Name</strong>, your <strong>Email</strong> (<code>you@rootiest.org</code>), your app password as the <strong>Password</strong>, and a <strong>Description</strong> like <em>Rootiest Mail</em>. Tap <strong>Next</strong>.</li>
+  <li>Make sure <strong>IMAP</strong> is selected at the top.</li>
+  <li>Under <strong>Incoming Mail Server</strong>, set <strong>Host Name</strong> to <code>mx.rootiest.dev</code>, <strong>User Name</strong> to your full address, and <strong>Password</strong> to your app password.</li>
+  <li>Under <strong>Outgoing Mail Server</strong>, fill in exactly the same three things. It says they're optional, but they aren't.</li>
+  <li>Tap <strong>Next</strong>. Your iPhone checks the account, which can take a moment.</li>
+  <li>Leave <strong>Mail</strong> switched on and tap <strong>Save</strong>.</li>
+</ol>
+
+<figure class="shot" data-shot="ios-mail-other"><img src="../shots/ios-mail-other.png" alt="The iPhone Add Account screen with Other selected and Add Mail Account at the top."><figcaption>Choose <strong>Other</strong>, then <strong>Add Mail Account</strong>.</figcaption></figure>
+
+<figure class="shot" data-shot="ios-mail-servers"><img src="../shots/ios-mail-servers.png" alt="The iPhone account screen with IMAP selected and mx.rootiest.dev filled in for both incoming and outgoing servers."><figcaption>Use <code>mx.rootiest.dev</code> for both servers, and fill in the username and password both times.</figcaption></figure>
+
+<h3>If sending doesn't work</h3>
+<p>Go back to the account in <strong>Mail Accounts</strong>, tap it, then tap <strong>SMTP</strong> under <strong>Outgoing Mail Server</strong> and tap <code>mx.rootiest.dev</code>. Check that <strong>Use SSL</strong> is on, <strong>Authentication</strong> is <strong>Password</strong>, and <strong>Server Port</strong> is <code>465</code>.</p>
+
+<h3>Calendars and contacts on iPhone and iPad</h3>
+<p>These are added as separate accounts, one for each:</p>
+<ol>
+  <li>For calendars, open <strong>Settings</strong> → <strong>Apps</strong> → <strong>Calendar</strong> → <strong>Calendar Accounts</strong> → <strong>Add Account</strong> → <strong>Other</strong> → <strong>Add CalDAV Account</strong>.</li>
+  <li>Set <strong>Server</strong> to <code>mx.rootiest.dev</code>, <strong>User Name</strong> to your full address, and <strong>Password</strong> to an app password. Tap <strong>Next</strong>, then <strong>Save</strong>.</li>
+  <li>For contacts, do the same under <strong>Settings</strong> → <strong>Apps</strong> → <strong>Contacts</strong> → <strong>Contacts Accounts</strong> → <strong>Add Account</strong> → <strong>Other</strong> → <strong>Add CardDAV Account</strong>.</li>
+</ol>
+<p>You can reuse the phone's mail app password for these, since it's all the same device.</p>
+
+<h2 id="mac">Mac</h2>
+<ol>
+  <li>Open <strong>Mail</strong> and choose <strong>Mail</strong> → <strong>Add Account…</strong> from the menu bar.</li>
+  <li>Pick <strong>Other Mail Account…</strong> and click <strong>Continue</strong>.</li>
+  <li>Enter your <strong>Name</strong>, <strong>Email Address</strong> and your app password as the <strong>Password</strong>. Click <strong>Sign In</strong>.</li>
+  <li>Mail says it can't verify the account name or password and shows more boxes. That's expected. Fill in:
+    <ul>
+      <li><strong>User Name</strong>: your full address</li>
+      <li><strong>Account Type</strong>: IMAP</li>
+      <li><strong>Incoming Mail Server</strong>: <code>mx.rootiest.dev</code></li>
+      <li><strong>Outgoing Mail Server</strong>: <code>mx.rootiest.dev</code></li>
+    </ul>
+  </li>
+  <li>Click <strong>Sign In</strong>, leave <strong>Mail</strong> ticked, and click <strong>Done</strong>.</li>
+</ol>
+
+<figure class="shot" data-shot="macos-mail-servers"><img src="../shots/macos-mail-servers.png" alt="The Mac Mail account dialog with IMAP selected and mx.rootiest.dev as the incoming and outgoing server."><figcaption>When Mail asks for more details, it's the same server for both.</figcaption></figure>
+
+<h3>Calendars and contacts on a Mac</h3>
+<ol>
+  <li>Open <strong>System Settings</strong> → <strong>Internet Accounts</strong> → <strong>Add Account…</strong> → <strong>Add Other Account…</strong>.</li>
+  <li>Choose <strong>CalDAV account</strong> for calendars, or <strong>CardDAV account</strong> for contacts.</li>
+  <li>Set <strong>Account Type</strong> to <strong>Manual</strong>. Enter your full address as the <strong>User Name</strong>, your app password, and <code>mx.rootiest.dev</code> as the <strong>Server Address</strong>. Click <strong>Sign In</strong>.</li>
+</ol>
+
+<h2>Sending from an alias</h2>
+<p>On iPhone and iPad, open the mail account's settings, tap the <strong>Email</strong> field, and use <strong>Add Another Email</strong> to add your <a href="../addresses/">alias</a>. On a Mac, open <strong>Mail</strong> → <strong>Settings</strong> → <strong>Accounts</strong>, pick the account, and choose <strong>Edit Email Addresses…</strong> from the <strong>Email Address</strong> menu.</p>

@@ -1,0 +1,56 @@
+# Rootiest Mail guide: screenshot list
+
+Every picture in the mail guide, and how to take it again after an app changes its look. The pages already point at these files.
+Until a file exists, the page shows a placeholder in its place.
+
+## How to take and store them
+
+- **Where they go:** `site/email/shots/<id>.png`. Pages link them as `../shots/<id>.png` (the index as `shots/<id>.png`), so the
+  file name must match the id exactly.
+- **The file in the repo is the source.** Keep only the finished, cropped and cleaned PNG. Don't commit the uncropped originals:
+  they show the very details the crop removes. To update a picture, take it again from the recipe below and replace the file.
+- **Account:** use a test account, or your own with the details below hidden. A test RootiestID in the `mail` group with a lowercase
+  username (for example `sam`) makes the hiding step much shorter.
+- **Hide:** addresses other than a placeholder like `sam@rootiest.org`, real names, folder names you'd rather not show, message
+  subjects and senders, calendar and contact names, and every password or secret. Paint over with a solid block. Blurring a secret
+  is not enough.
+- **Size:** crop tightly to the part the caption talks about. Desktop shots at 100% zoom, roughly 1000 to 1400 px wide after the crop.
+  Phone shots at the phone's own resolution, cropped to the relevant part of the screen. PNG, run through `oxipng` or similar.
+- **Theme:** light mode, so the pictures match each other.
+- **Alt text and captions** are already in the pages. If a new picture shows something different, update the page's `alt` and
+  `figcaption` too.
+
+## The shots
+
+| id | Page | What to capture | Device | Crop | Hide |
+|---|---|---|---|---|---|
+| `webmail-login` | webmail | webmail.rootiest.dev sign-in page, signed out, with the **Login with RootiestID** button below the Username/Password boxes | workstation (browser) | the login box and the button, logo included | nothing personal on this screen |
+| `webmail-inbox` | webmail | the main mail screen: left menu, folder list, message list and an open message | workstation (browser) | the whole app window, browser chrome cut off | every subject, sender, address, message text and personal folder name (use a test account with a few dummy messages if possible) |
+| `webmail-filter` | webmail | Settings → Filters → Create, with a filter named e.g. "Newsletters": From contains `news@example.com`, Move message to `Newsletters` | workstation (browser) | the filter form | your filter list and folder names other than the example |
+| `webmail-out-of-office` | webmail | Settings → Out of Office with Subject, Body, Start time, End time and Status filled with example text | workstation (browser) | the Out of Office form | your address in "My e-mail addresses" if shown |
+| `app-password-list` | app-passwords | mail.rootiest.dev/account, signed in, menu open at Credentials → App Passwords, list visible with the **Create App password** button | workstation (browser) | the menu and the list | descriptions of your real app passwords, your address in the header |
+| `app-password-create` | app-passwords | the Create App password form with Description "Thunderbird on my laptop", Permissions left at "Same permissions as account", Expiration Date and Allowed IPs empty | workstation (browser) | the form, all three sections | your address in the header |
+| `app-password-created` | app-passwords | the screen right after Create, saying "Created successfully" and showing the Secret | workstation (browser) | the message and the secret field | **the secret: paint it over completely**, then delete that app password straight away |
+| `thunderbird-setup` | thunderbird | Thunderbird's "Set up your existing email address" screen with Your full name, Email address and Password filled | workstation (Thunderbird) | the form | real name (use "Sam Example"), the address (use the test account), password dots are fine |
+| `thunderbird-found` | thunderbird | the next screen: configuration found, IMAP selected, mx.rootiest.dev for incoming and outgoing, **Done** button | workstation (Thunderbird) | the found-settings panel and the Done button | the address |
+| `thunderbird-calendar` | thunderbird | New Calendar → On the Network, with Username and Location `https://mx.rootiest.dev/dav/cal/` filled | workstation (Thunderbird) | the dialog | the address |
+| `thunderbird-android-address` | thunderbird-android | Thunderbird for Android's first account screen with the address typed in | phone (Android) | the form area, status bar cut off | the address |
+| `thunderbird-android-found` | thunderbird-android | the screen showing the incoming and outgoing servers it found (mx.rootiest.dev) | phone (Android) | the server details | the address |
+| `thunderbird-android-password` | thunderbird-android | the password screen with the box filled (dots) | phone (Android) | the form area | the address |
+| `davx5-login` | calendars-contacts | DAVx⁵ add account → Login with URL and user name, with Base URL `https://mx.rootiest.dev/` and the user name filled | phone (Android) | the form | the address |
+| `ios-mail-other` | apple | iPhone Settings → Apps → Mail → Mail Accounts → Add Account → Other, showing **Add Mail Account** | phone (iPhone) | the list | other accounts on the device |
+| `ios-mail-servers` | apple | the New Account screen after Next: IMAP selected, Incoming and Outgoing Mail Server both filled with mx.rootiest.dev | phone (iPhone) | both server sections | name, address, description |
+| `macos-mail-servers` | apple | Mac Mail → Add Account → Other Mail Account, the second step with Account Type IMAP and both servers filled | Mac | the dialog | name and address |
+| `outlook-new-imap` | outlook | new Outlook → Add account → IMAP advanced settings form with the servers, ports and SSL/TLS filled | Windows PC | the form | the address |
+| `outlook-classic-add` | outlook | classic Outlook File → Add Account with the address typed and Advanced options visible | Windows PC | the dialog | the address |
+
+## Devices you may not have
+
+The iPhone, Mac and Outlook shots need devices that may not be on hand. Those pictures can wait: the steps are written to work
+without them, and the placeholders stay until someone with the device takes them using the recipe above.
+
+## After an app update
+
+When a screen changes (a new Thunderbird, a Stalwart or Roundcube upgrade, a new iOS), retake its shots and check the steps on the
+page still match the labels. The Stalwart account page labels come from Stalwart's schema, so check `app-password-*` after every
+Stalwart upgrade. The webmail labels come from Roundcube and its managesieve plugin.

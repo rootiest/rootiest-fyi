@@ -1,0 +1,57 @@
+<!-- title: Outlook -->
+<!-- description: Set up Rootiest Mail in new Outlook, classic Outlook, or the Outlook phone app. -->
+<!-- order: 90 -->
+
+<p>Outlook works with Rootiest Mail as an IMAP account. There are a few different Outlooks around, so first figure out which one you have:</p>
+<ul>
+  <li><strong>New Outlook</strong>: the current app on Windows 11 (and the Mac). It has a simple, flat look and a <strong>Settings</strong> gear at the top right.</li>
+  <li><strong>Classic Outlook</strong>: the older desktop app that comes with Microsoft 365 or Office, with a <strong>File</strong> menu at the top left.</li>
+  <li><strong>Outlook for iPhone or Android.</strong></li>
+</ul>
+
+<p>Whichever you have, <a href="../app-passwords/">make an app password</a> for it first.</p>
+
+<aside class="note">
+  <p>New Outlook and the Outlook phone apps don't connect to the mail server themselves. Microsoft's servers fetch your mail and pass it on, which means your app password is stored with Microsoft. That works fine, but if you'd rather keep Microsoft out of it, <a href="../thunderbird/">Thunderbird</a> or your device's own mail app connect directly.</p>
+</aside>
+
+<h2 id="new-outlook">New Outlook</h2>
+<ol>
+  <li>Click the <strong>Settings</strong> gear, then <strong>Accounts</strong> → <strong>Email accounts</strong> → <strong>Add account</strong>.</li>
+  <li>Enter your address, <code>you@rootiest.org</code>, and click <strong>Continue</strong>.</li>
+  <li>If Outlook asks which kind of account it is, choose <strong>IMAP</strong>.</li>
+  <li>Paste your app password. If Outlook shows the server settings, check them against the list below. If it only asks for a password, it found them by itself.</li>
+  <li>Click <strong>Continue</strong> and wait for it to finish.</li>
+</ol>
+
+<figure class="shot" data-shot="outlook-new-imap"><img src="../shots/outlook-new-imap.png" alt="New Outlook's IMAP settings form, with mx.rootiest.dev, ports 993 and 465 and SSL/TLS filled in."><figcaption>New Outlook's IMAP settings, if it shows them.</figcaption></figure>
+
+<p>The settings, if you need to type them in:</p>
+<ul>
+  <li><strong>IMAP incoming server</strong>: <code>mx.rootiest.dev</code>, <strong>Port</strong> <code>993</code>, <strong>Secure connection type</strong> SSL/TLS</li>
+  <li><strong>SMTP outgoing server</strong>: <code>mx.rootiest.dev</code>, <strong>Port</strong> <code>465</code>, <strong>Secure connection type</strong> SSL/TLS</li>
+  <li><strong>Username</strong> for both: your full address. <strong>Password</strong> for both: your app password.</li>
+</ul>
+
+<h2 id="classic-outlook">Classic Outlook</h2>
+<ol>
+  <li>Click <strong>File</strong> → <strong>Add Account</strong>.</li>
+  <li>Enter your address and click <strong>Connect</strong>.</li>
+  <li>Outlook looks up the settings. If it asks which kind of account it is, choose <strong>IMAP</strong>.</li>
+  <li>Paste your app password when it asks and click <strong>Connect</strong>.</li>
+  <li>Click <strong>Done</strong>.</li>
+</ol>
+<p>If Outlook can't find the settings, start again, click <strong>Advanced options</strong> under the address, tick <strong>Let me set up my account manually</strong>, choose <strong>IMAP</strong>, and enter the settings from the list above. Make sure the encryption method is <strong>SSL/TLS</strong> for both servers.</p>
+
+<figure class="shot" data-shot="outlook-classic-add"><img src="../shots/outlook-classic-add.png" alt="Classic Outlook's Add Account window with a rootiest.org address typed in and Advanced options visible."><figcaption>Classic Outlook's <strong>Add Account</strong> window.</figcaption></figure>
+
+<h2 id="mobile">Outlook for iPhone and Android</h2>
+<ol>
+  <li>Open the app's menu and tap <strong>Add account</strong> (or the settings gear, then <strong>Add mail account</strong>).</li>
+  <li>Enter your address and tap <strong>Continue</strong>.</li>
+  <li>If it asks for a provider, choose <strong>IMAP</strong> and turn on <strong>Advanced settings</strong>.</li>
+  <li>Fill in the same settings as above, with your app password for both servers, and tap the check mark to finish.</li>
+</ol>
+
+<h2>Calendars and contacts</h2>
+<p>Outlook doesn't sync calendars or contacts from servers like this one (CalDAV and CardDAV). Only your mail shows up in Outlook. For calendars and contacts, see <a href="../calendars-contacts/">Calendars and contacts</a> for apps that do.</p>
