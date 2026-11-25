@@ -1,0 +1,125 @@
+# Copyright (C) 2026 Chris Laprade (chris@rootiest.com)
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# The catalog behind https://rootiest.fyi: every public docs and share site, grouped by category.
+# scripts/build.py turns it into site/index.html. Edit this file, then rebuild.
+#
+# It is written in a strict subset of YAML (see scripts/sitegen/catalog/parse.py): plain values,
+# "double quotes" for text containing ": " or " #" or starting with a special character, [flow, lists].
+# The build refuses anything else and names the line.
+#
+# categories: the headings, in the order they appear. blurb is optional.
+# sites: one entry per site.
+#   label        short id, the site's redirects label where it has one (lower-case, digits, hyphens)
+#   url          where the card links (https)
+#   title        the card's heading
+#   description  one or two sentences
+#   icon         an https URL, or a path on icons.rootiest.fyi or pages.rootiest.fyi (https:// is added)
+#   category     one of the categories below
+#   order        position within the category (lowest first)
+#   optional: tags [list], repo (source URL), status (a short badge such as New),
+#             links (list of title + url), aliases (other host names that serve the same site)
+
+categories:
+  - name: Guides
+    blurb: Step-by-step help for using Rootiest services.
+  - name: Reference
+    blurb: Cheatsheets and manuals for the configs I run every day.
+  - name: Design
+  - name: Shares
+    blurb: Files and pages published for anyone to open.
+  - name: Help
+    blurb: When something isn't working.
+
+sites:
+  - label: email
+    url: https://email.rootiest.fyi
+    title: Rootiest Mail guide
+    description: Setting up and using a Rootiest Mail address, in the browser, on your phone and in desktop mail apps.
+    icon: icons.rootiest.fyi/color/rootiest-mail.svg
+    category: Guides
+    order: 10
+    status: New
+    tags: [mail]
+    repo: https://git.rootiest.dev/rootiest/rootiest-fyi
+
+  - label: ssh
+    url: https://git.rootiest.fyi
+    title: Git over SSH
+    description: How to clone and push to git.rootiest.dev over SSH, and how to check you're talking to the real server.
+    icon: icons.rootiest.fyi/color/rootiest-gitea-ssh.svg
+    category: Guides
+    order: 20
+    tags: [git, ssh]
+    repo: https://git.rootiest.dev/rootiest/gitea-ssh-help
+    aliases: [ssh.rootiest.fyi]
+
+  - label: nvim
+    url: https://nvim.rootiest.fyi
+    title: Neovim cheatsheet
+    description: Every Vim motion, built-in key and keymap in my Neovim config, searchable and laid out on a keyboard.
+    icon: icons.rootiest.fyi/color/rootiest-nvim.svg
+    category: Reference
+    order: 10
+    tags: [neovim]
+    repo: https://git.rootiest.dev/rootiest/neovim-config
+
+  - label: qmk
+    url: https://qmk.rootiest.fyi
+    title: Q5 Max keyboard cheatsheet
+    description: The layers, keys, chords and shortcuts of my Keychron Q5 Max keymap, on an interactive keyboard.
+    icon: icons.rootiest.fyi/color/rootiest-keeb.svg
+    category: Reference
+    order: 20
+    tags: [qmk, keyboard]
+
+  - label: fish
+    url: https://fish.rootiest.fyi
+    title: Fish config manual
+    description: The reference manual for my fish shell config, with every function, what it does and how to use it.
+    icon: icons.rootiest.fyi/color/rootiest-fish-config.svg
+    category: Reference
+    order: 30
+    tags: [fish, shell]
+    repo: https://git.rootiest.dev/rootiest/fish-config
+    aliases: [fish-config.rootiest.fyi]
+
+  - label: icons
+    url: https://icons.rootiest.fyi
+    title: Rootiest Icons
+    description: The Rootiest logo and every service icon. Search them, preview each variant, recolor them, or download any size.
+    icon: icons.rootiest.fyi/color/rootiest-icons.svg
+    category: Design
+    order: 10
+
+  - label: pages
+    url: https://pages.rootiest.fyi
+    title: Rootiest Pages
+    description: The folders every site here publishes to. Browse them for the raw files, public keys and older pages.
+    icon: icons.rootiest.fyi/color/rootiest-pages.svg
+    category: Shares
+    order: 10
+
+  - label: share
+    url: https://share.rootiest.fyi
+    title: Shared files
+    description: Share links from Rootiest Files open here. Members can also sign in to reach their own files.
+    icon: icons.rootiest.fyi/color/rootiest-files.svg
+    category: Shares
+    order: 20
+
+  - label: status
+    url: https://status.rootiest.dev
+    title: Service status
+    description: Live health of every Rootiest service and server. Check here first when something seems down.
+    icon: icons.rootiest.fyi/color/rootiest-status.svg
+    category: Help
+    order: 10
+
+  - label: support
+    url: https://support.rootiest.dev
+    title: Support
+    description: Questions, problems and requests for any Rootiest service. Sign in with your RootiestID and open a ticket.
+    icon: icons.rootiest.fyi/color/rootiest-support.svg
+    category: Help
+    order: 20

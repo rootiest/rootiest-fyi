@@ -1,0 +1,18 @@
+
+#   ──────────────── Added by agents-init ──────────────────
+#   agents-init --agents
+AGENTS/
+AGENTS.local.md
+#   ────────────────────────────────────────────────────────
+
+#   ──────────────── Added by agents-init ──────────────────
+#   agents-init --plugins
+docs/superpowers
+docs/plans
+docs/specs
+docs/devlogs
+#   ────────────────────────────────────────────────────────
+
+# Python
+__pycache__/
+*.pyc

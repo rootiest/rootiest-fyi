@@ -1,0 +1,20 @@
+# Copyright (C) 2026 Chris Laprade (chris@rootiest.com)
+# SPDX-License-Identifier: AGPL-3.0-or-later
+#
+# CI: runs the generator's tests and checks that site/ matches the generator,
+# has no broken links and loads no third-party scripts. Standard library only,
+# so the stock runner image needs nothing installed. Runs on Gitea runners;
+# GitHub sees this file through the mirror and the guard skips it there.
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  check:
+    if: github.server_url != 'https://github.com'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test and check the site
+        run: ./tests/run-tests.sh
