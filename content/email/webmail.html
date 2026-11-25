@@ -1,0 +1,65 @@
+<!-- title: Webmail -->
+<!-- description: Read and send Rootiest Mail in your browser, and set up contacts, filters and out-of-office replies. -->
+<!-- order: 30 -->
+
+<p>Webmail lets you use Rootiest Mail from any browser without setting anything up. It lives at <a href="https://webmail.rootiest.dev">webmail.rootiest.dev</a> and works on phones too.</p>
+
+<h2>Signing in</h2>
+<ol>
+  <li>Go to <a href="https://webmail.rootiest.dev">webmail.rootiest.dev</a>.</li>
+  <li>Click <strong>Login with RootiestID</strong> under the form. Ignore the Username and Password boxes above it.</li>
+  <li>Sign in to RootiestID if it asks. You land in your inbox.</li>
+</ol>
+
+<figure class="shot" data-shot="webmail-login"><img src="../shots/webmail-login.png" alt="The webmail sign-in page, with the Login with RootiestID button below the username and password boxes."><figcaption>Use the <strong>Login with RootiestID</strong> button. The boxes above it are only for app passwords.</figcaption></figure>
+
+<aside class="note">
+  <p>The Username and Password boxes do work with an <a href="../app-passwords/">app password</a>, in case RootiestID is ever down. You won't need them day to day.</p>
+</aside>
+
+<p>Webmail signs you out after about an hour of not using it. Just click <strong>Login with RootiestID</strong> again.</p>
+
+<h2>Finding your way around</h2>
+<figure class="shot" data-shot="webmail-inbox"><img src="../shots/webmail-inbox.png" alt="The webmail main screen: the menu on the far left, the folder list, the message list and the open message."><figcaption>From left to right: the main menu, your folders, the message list and the message you're reading.</figcaption></figure>
+<ul>
+  <li>The menu on the far left switches between <strong>Mail</strong>, <strong>Contacts</strong> and <strong>Settings</strong>. <strong>Compose</strong> at the top starts a new message.</li>
+  <li>Select a message and use the buttons above it to reply, forward, delete, archive it or mark it as junk. The <strong>Archive</strong> button needs to know which folder to use: pick one under <strong>Settings</strong> → <strong>Preferences</strong> → <strong>Special Folders</strong>.</li>
+  <li>Spam that gets caught lands in the <strong>Junk</strong> folder. It's worth a look now and then in case something real ended up there.</li>
+  <li>Attachments in webmail can be up to 25 MB.</li>
+</ul>
+
+<h3 id="folders">Folders</h3>
+<p>Make, rename and delete folders under <strong>Settings</strong> → <strong>Folders</strong>. Folders are stored on the server, so they show up in your mail apps too. If a folder you expect is missing in webmail or an app, check that it's subscribed (the switch next to it in <strong>Settings</strong> → <strong>Folders</strong>). Each app keeps its own list of subscribed folders.</p>
+
+<h2 id="contacts">Contacts</h2>
+<p>Under <strong>Contacts</strong> you'll see two kinds of address book:</p>
+<ul>
+  <li>The address books under <strong>Rootiest Mail</strong> hold the contacts stored on the mail server. These sync with your phone and computer if you set up <a href="../calendars-contacts/">contacts syncing</a>. Save contacts here.</li>
+  <li><strong>Personal Addresses</strong> only exists inside webmail and doesn't sync anywhere.</li>
+</ul>
+<p>Contacts you add on your phone or in Thunderbird can take up to 15 minutes to show up in webmail.</p>
+
+<h2 id="filters">Filters</h2>
+<p>Filters sort your mail as it arrives, for example moving everything from a mailing list into its own folder. They run on the server, so they work even when webmail and your apps are closed.</p>
+<ol>
+  <li>Open <strong>Settings</strong> → <strong>Filters</strong>.</li>
+  <li>Click <strong>Create</strong>, fill in the <strong>Filter name</strong>, and set the rule. For example: <em>From</em> <em>contains</em> <code>news@example.com</code>, then <em>Move message to</em> <em>Newsletters</em>.</li>
+  <li>Click <strong>Save</strong>.</li>
+</ol>
+<figure class="shot" data-shot="webmail-filter"><img src="../shots/webmail-filter.png" alt="The new filter form in webmail, with a rule that moves messages from one sender into a folder."><figcaption>A filter that moves one sender's mail into its own folder.</figcaption></figure>
+
+<h2 id="out-of-office">Out of office replies</h2>
+<p>To answer mail automatically while you're away:</p>
+<ol>
+  <li>Open <strong>Settings</strong> → <strong>Out of Office</strong>.</li>
+  <li>Fill in the <strong>Subject</strong> and <strong>Body</strong>. If you know when you'll be back, set the <strong>Start time</strong> and <strong>End time</strong> and it turns itself on and off.</li>
+  <li>Set <strong>Status</strong> to <strong>On</strong> and click <strong>Save</strong>. When you're back (and didn't set an end time), set it to <strong>Off</strong> again.</li>
+</ol>
+<figure class="shot" data-shot="webmail-out-of-office"><img src="../shots/webmail-out-of-office.png" alt="The Out of Office settings in webmail with a subject, a message and start and end dates."><figcaption>The <strong>Out of Office</strong> settings.</figcaption></figure>
+
+<aside class="note">
+  <p>Your account page at mail.rootiest.dev also has sections for mail rules and a vacation response. Please stick to webmail for filters and out-of-office replies so you only have one set of rules to keep track of.</p>
+</aside>
+
+<h2 id="sending-from-another-address">Sending from another address</h2>
+<p>If you have an <a href="../addresses/">alias</a>, you can send from it. Go to <strong>Settings</strong> → <strong>Identities</strong>, click <strong>Create</strong>, and put the alias in the <strong>Email</strong> box. When you write a message, pick it in the <strong>From</strong> menu.</p>
