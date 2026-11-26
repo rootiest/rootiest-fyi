@@ -640,6 +640,11 @@ img {
   margin: 1.5rem 0;
 }
 
+/* A shot with a dark-mode version is a <picture>: the browser picks the file for the reader's theme */
+.shot picture {
+  display: block;
+}
+
 .shot img {
   display: block;
   height: auto;
