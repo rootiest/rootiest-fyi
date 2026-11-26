@@ -8,8 +8,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Aliases and plus addresses - Rootiest Mail guide</title>
-  <meta name="description" content="Extra addresses for your mailbox, and how to use name+tag addresses to sort mail and spot leaks." />
+  <title>Aliases, plus and masked addresses - Rootiest Mail guide</title>
+  <meta name="description" content="Extra addresses for your mailbox: name+tag addresses to sort mail and spot leaks, and masked addresses that hide who you are." />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Chris Laprade" />
   <meta name="color-scheme" content="light dark" />
@@ -24,15 +24,15 @@
   <meta property="og:site_name" content="Rootiest Mail guide" />
   <meta property="og:url" content="https://email.rootiest.fyi/addresses/" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Aliases and plus addresses - Rootiest Mail guide" />
-  <meta property="og:description" content="Extra addresses for your mailbox, and how to use name+tag addresses to sort mail and spot leaks." />
+  <meta property="og:title" content="Aliases, plus and masked addresses - Rootiest Mail guide" />
+  <meta property="og:description" content="Extra addresses for your mailbox: name+tag addresses to sort mail and spot leaks, and masked addresses that hide who you are." />
   <meta property="og:image" content="https://icons.rootiest.fyi/social/mail.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Rootiest Mail: set up mail, calendars and contacts" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Aliases and plus addresses - Rootiest Mail guide" />
-  <meta name="twitter:description" content="Extra addresses for your mailbox, and how to use name+tag addresses to sort mail and spot leaks." />
+  <meta name="twitter:title" content="Aliases, plus and masked addresses - Rootiest Mail guide" />
+  <meta name="twitter:description" content="Extra addresses for your mailbox: name+tag addresses to sort mail and spot leaks, and masked addresses that hide who you are." />
   <meta name="twitter:image" content="https://icons.rootiest.fyi/social/mail.png" />
 </head>
 
@@ -62,13 +62,13 @@
           <li><a href="../apple/">Apple Mail</a></li>
           <li><a href="../outlook/">Outlook</a></li>
           <li><a href="../calendars-contacts/">Calendars and contacts</a></li>
-          <li><a href="../addresses/" aria-current="page">Aliases and plus addresses</a></li>
+          <li><a href="../addresses/" aria-current="page">Aliases, plus and masked addresses</a></li>
           <li><a href="../encryption/">Encrypted mail (OpenPGP)</a></li>
           <li><a href="../help/">Getting help</a></li>
         </ol>
       </nav>
       <main id="main" class="guide">
-<h1>Aliases and plus addresses</h1>
+<h1>Aliases, plus and masked addresses</h1>
 <h2>Plus addresses</h2>
 <p>You can add a <code>+</code> and any word you like after your name, and the mail still comes to you. If your address is <code>sam@rootiest.org</code>, then <code>sam+shopping@rootiest.org</code>, <code>sam+bank@rootiest.org</code> and <code>sam+anything@rootiest.org</code> all land in your inbox. You don't need to set anything up first. Just make one up when you need it.</p>
 
@@ -83,6 +83,29 @@
 </aside>
 
 <p>Replies you send still come from your normal address unless you change it, so the tag stays private to whoever you gave it to.</p>
+
+<h2 id="masked-addresses">Masked addresses</h2>
+<p>A masked address is a random throwaway address that delivers to your mailbox, like <code>80j7sm2nyecsbsir.a4v3rm1nbehew47rg3h6etn1@rootiest.org</code>. Nothing in it points back to you. That's the difference from a plus address: anyone can work out your real address from <code>sam+shop@rootiest.org</code>, while a masked one gives nothing away. They're best for sign-ups, newsletters and one-off forms where you only need to receive mail.</p>
+
+<p>To make one in <a href="../webmail/">webmail</a>:</p>
+<ol>
+  <li>Open <strong>Settings</strong> → <strong>Password &amp; sign-in</strong> and scroll down to <strong>Masked addresses</strong>.</li>
+  <li>Pick the domain, and if you like, note the website and a description, so you remember later where you used it.</li>
+  <li>Click <strong>Create masked address</strong>, then <strong>Copy</strong> to put it on your clipboard.</li>
+</ol>
+
+<figure class="shot shot-pending" data-shot="masked-address-list"><span class="shot-placeholder" role="img" aria-label="The Masked addresses section in webmail settings: a list with one address, its description, website and state, and the form to create another."><span class="shot-alt">The Masked addresses section in webmail settings: a list with one address, its description, website and state, and the form to create another.</span><span class="shot-id">Screenshot masked-address-list coming soon</span></span><figcaption>Your masked addresses, with the website and description you gave each one. <strong>Edit</strong> turns one off or deletes it.</figcaption></figure>
+
+<p>Before you use one, know what it can't do:</p>
+<ul>
+  <li><strong>You can't send from it.</strong> Masked addresses only receive.</li>
+  <li><strong>Replying shows your real address.</strong> If you answer mail that came in on a masked address, the reply comes from your normal one. When you'll need to write back, use a plus address instead.</li>
+  <li><strong>You can have up to 5.</strong> Turned-off addresses may still count, so delete the ones you're done with.</li>
+</ul>
+
+<p>When a masked address starts getting spam, open <strong>Edit</strong> and turn it off. New mail to it bounces as if the address never existed, so the sender can't tell it was ever yours. Delete it if you won't want it back.</p>
+
+<p>Mail that arrives on a masked address shows it in the <em>To</em> line, so a <a href="../webmail/#filters">filter</a> on <em>To</em> can sort it like a plus address.</p>
 
 <h2>Aliases</h2>
 <p>An alias is a second address that delivers to your same mailbox, like a nickname. Unlike plus addresses, aliases are set up for you: if you'd like one, ask on the <a href="https://support.rootiest.dev">support desk</a> and say which address you want. I approve each one by hand, so it may take a day or two.</p>
