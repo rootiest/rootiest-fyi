@@ -7,7 +7,7 @@ from ..html.head import head
 from ..html.header import header
 
 
-def _page(title, home, lede, image):
+def _page(title, home, lede, image, image_alt):
     """Return a 404 page. It is served at any path, so local files are root-relative."""
     main = f"""    <section class="hero compact">
       <img src="/favicon.svg" alt="" class="hero-logo" width="72" height="72" />
@@ -21,7 +21,7 @@ def _page(title, home, lede, image):
     </section>
 """
     return (head(f"Page not found - {title}", "This page does not exist.", home + "404.html", "/", image,
-                 "The Rootiest logo", title, robots="noindex")
+                 image_alt, title, robots="noindex")
             + header(title, home, "/favicon.svg", config.NAV)
             + f'\n  <main id="main" class="wrap">\n{main}  </main>\n\n' + footer())
 
@@ -40,10 +40,10 @@ def build(with_guide=True):
     """
     out = {"404.html": _page(config.HUB_TITLE, config.HUB_URL + "/",
                              "That page doesn't exist, or it moved. The docs index lists everything on rootiest.fyi.",
-                             config.HUB_IMAGE)}
+                             config.HUB_IMAGE, config.HUB_IMAGE_ALT)}
     if with_guide:
         out[f"{config.GUIDE_DIR}/404.html"] = _page(
             config.GUIDE_TITLE, config.GUIDE_URL + "/",
             "That page isn't part of the guide, or it moved. Start again from the guide's first page.",
-            config.GUIDE_IMAGE)
+            config.GUIDE_IMAGE, config.GUIDE_IMAGE_ALT)
     return out

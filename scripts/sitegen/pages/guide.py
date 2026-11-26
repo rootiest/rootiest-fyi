@@ -78,7 +78,7 @@ def build(content=None, shots_dir=None):
             body = f"<h1>{escape(page.title)}</h1>\n{body}"
         title = config.GUIDE_TITLE if page.slug == "" else f"{page.title} - {config.GUIDE_TITLE}"
         url = f"{config.GUIDE_URL}/{page.path}"
-        html = (head(title, page.description, url, up, config.GUIDE_IMAGE, "The Rootiest Mail icon, an envelope",
+        html = (head(title, page.description, url, up, config.GUIDE_IMAGE, config.GUIDE_IMAGE_ALT,
                      config.GUIDE_TITLE)
                 + header(config.GUIDE_TITLE, up or "./", up + "favicon.svg",
                          [(config.HUB_URL + "/", "All docs"), (config.SUPPORT_URL + "/", "Support")])
