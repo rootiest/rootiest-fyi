@@ -21,7 +21,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from sitegen.catalog.load import load  # noqa: E402
 from sitegen.catalog.parse import CatalogError, parse  # noqa: E402
 from sitegen.guide.fragments import FragmentError, read_fragment  # noqa: E402
-from sitegen.guide.shots import ShotError, render_shots  # noqa: E402
+from sitegen.guide.shots import ShotError, dark_name, render_shots  # noqa: E402
 
 try:
     import yaml
@@ -111,6 +111,24 @@ class GuideTests(unittest.TestCase):
             self.assertEqual(pending, [])
             html, _ = render_shots(fig, 0, shots)
             self.assertIn('src="shots/webmail-login.png"', html)
+
+    def test_shot_dark_version(self):
+        shots = FIX / "shots"
+        fig = '<figure class="shot" data-shot="webmail-login"><img src="../shots/webmail-login.png" alt="A"></figure>'
+        dark = shots / "webmail-login-dark.png"
+        try:
+            dark.write_bytes((shots / "webmail-login.png").read_bytes())
+            html, pending = render_shots(fig, 1, shots)
+        finally:
+            dark.unlink()
+        self.assertEqual(pending, [])
+        self.assertIn('<picture><source srcset="../shots/webmail-login-dark.png" media="(prefers-color-scheme: dark)" />', html)
+        self.assertIn('src="../shots/webmail-login.png"', html)
+        plain, _ = render_shots(fig, 1, shots)
+        self.assertNotIn("<picture>", plain)
+
+    def test_dark_name(self):
+        self.assertEqual(dark_name("shots/a-b.png"), "shots/a-b-dark.png")
 
     def test_shot_placeholder(self):
         fig = '<figure class="shot" data-shot="nope"><img src="../shots/nope.png" alt="Alt text"><figcaption>C</figcaption></figure>'

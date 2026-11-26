@@ -25,7 +25,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from sitegen import config  # noqa: E402
 from sitegen.catalog.parse import CatalogError  # noqa: E402
 from sitegen.guide.fragments import FragmentError  # noqa: E402
-from sitegen.guide.shots import ShotError  # noqa: E402
+from sitegen.guide.shots import ShotError, dark_name  # noqa: E402
 from sitegen.pages import guide, hub, not_found  # noqa: E402
 
 
@@ -61,6 +61,10 @@ def main():
     print(f"wrote {len(files)} files to {out}")
     for page, sid, rel in pending:
         print(f"pending screenshot: {config.GUIDE_DIR}/{rel} (shot {sid}, on {config.GUIDE_DIR}/{page})")
+    shots = Path(a.shots) if a.shots else config.SITE / config.GUIDE_DIR / "shots"
+    for light in sorted(shots.glob("*.png")):
+        if not light.stem.endswith("-dark") and not (shots / dark_name(f"shots/{light.name}")[len("shots/"):]).is_file():
+            print(f"no dark screenshot: {config.GUIDE_DIR}/shots/{light.stem}-dark.png (shot {light.stem})")
 
 
 if __name__ == "__main__":
