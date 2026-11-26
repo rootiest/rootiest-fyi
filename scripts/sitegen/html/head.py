@@ -17,7 +17,7 @@ def head(title, desc, url, prefix, image, image_alt, site_name, robots="index, f
         at more than one address, "/" for error pages served at any path. The
         page loads nothing from other sites: no scripts, fonts or embeds.
     EXAMPLE
-        head("Rootiest Docs", "...", "https://rootiest.fyi/", "", config.HUB_IMAGE, "Rootiest logo", "Rootiest Docs")
+        head("Rootiest Docs", "...", "https://rootiest.fyi/", "", config.HUB_IMAGE, config.HUB_IMAGE_ALT, "Rootiest Docs")
     """
     t, d, alt = escape(title), escape(desc), escape(image_alt)
     return f"""<!DOCTYPE html>
@@ -45,10 +45,10 @@ def head(title, desc, url, prefix, image, image_alt, site_name, robots="index, f
   <meta property="og:title" content="{t}" />
   <meta property="og:description" content="{d}" />
   <meta property="og:image" content="{image}" />
-  <meta property="og:image:width" content="512" />
-  <meta property="og:image:height" content="512" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="{alt}" />
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{t}" />
   <meta name="twitter:description" content="{d}" />
   <meta name="twitter:image" content="{image}" />

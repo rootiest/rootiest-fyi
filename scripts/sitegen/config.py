@@ -19,12 +19,16 @@ HOME_URL = "https://rootiest.com"
 STATUS_URL = "https://status.rootiest.dev"
 SUPPORT_URL = "https://support.rootiest.dev"
 ICONS = "https://icons.rootiest.fyi/color/raster"
+# Link-preview cards (1200x630), from rootiest-icons' scripts/social.tsv.
+CARDS = "https://icons.rootiest.fyi/social"
 
 HUB_TITLE = "Rootiest Docs"
 HUB_DESC = "Guides, cheatsheets, icons and shared files from Rootiest, all in one place."
-HUB_IMAGE = f"{ICONS}/logo/logo-512px.png"
+HUB_IMAGE = f"{CARDS}/docs.png"
+HUB_IMAGE_ALT = "Rootiest Docs: guides and references for every Rootiest site"
 GUIDE_TITLE = "Rootiest Mail guide"
-GUIDE_IMAGE = f"{ICONS}/rootiest-mail/rootiest-mail-512px.png"
+GUIDE_IMAGE = f"{CARDS}/mail.png"
+GUIDE_IMAGE_ALT = "Rootiest Mail: set up mail, calendars and contacts"
 
 ENTITY = "Rootiest Solutions LLC"
 YEAR = 2026
