@@ -9,7 +9,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Webmail - Rootiest Mail guide</title>
-  <meta name="description" content="Read and send Rootiest Mail in your browser, and set up contacts, filters and out-of-office replies." />
+  <meta name="description" content="Read and send Rootiest Mail in your browser, and set up filters, out-of-office replies and notifications." />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="Chris Laprade" />
   <meta name="color-scheme" content="light dark" />
@@ -25,14 +25,14 @@
   <meta property="og:url" content="https://email.rootiest.fyi/webmail/" />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Webmail - Rootiest Mail guide" />
-  <meta property="og:description" content="Read and send Rootiest Mail in your browser, and set up contacts, filters and out-of-office replies." />
+  <meta property="og:description" content="Read and send Rootiest Mail in your browser, and set up filters, out-of-office replies and notifications." />
   <meta property="og:image" content="https://icons.rootiest.fyi/social/mail.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Rootiest Mail: set up mail, calendars and contacts" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Webmail - Rootiest Mail guide" />
-  <meta name="twitter:description" content="Read and send Rootiest Mail in your browser, and set up contacts, filters and out-of-office replies." />
+  <meta name="twitter:description" content="Read and send Rootiest Mail in your browser, and set up filters, out-of-office replies and notifications." />
   <meta name="twitter:image" content="https://icons.rootiest.fyi/social/mail.png" />
 </head>
 
@@ -69,67 +69,75 @@
       </nav>
       <main id="main" class="guide">
 <h1>Webmail</h1>
-<p>Webmail lets you use Rootiest Mail from any browser without setting anything up. It lives at <a href="https://webmail.rootiest.dev">webmail.rootiest.dev</a> and works on phones too.</p>
+<p>Webmail lets you use Rootiest Mail from any browser without setting anything up. It lives at <a href="https://webmail.rootiest.dev">webmail.rootiest.dev</a> and works on phones too. Your mail, calendar and contacts are all in one place there.</p>
 
 <h2>Signing in</h2>
 <ol>
   <li>Go to <a href="https://webmail.rootiest.dev">webmail.rootiest.dev</a>.</li>
-  <li>Click <strong>Login with RootiestID</strong> under the form. Ignore the Username and Password boxes above it.</li>
+  <li>Click <strong>Sign in with SSO</strong>.</li>
   <li>Sign in to RootiestID if it asks. You land in your inbox.</li>
 </ol>
 
-<figure class="shot shot-pending" data-shot="webmail-login"><span class="shot-placeholder" role="img" aria-label="The webmail sign-in page, with the Login with RootiestID button below the username and password boxes."><span class="shot-alt">The webmail sign-in page, with the Login with RootiestID button below the username and password boxes.</span><span class="shot-id">Screenshot webmail-login coming soon</span></span><figcaption>Use the <strong>Login with RootiestID</strong> button. The boxes above it are only for app passwords.</figcaption></figure>
+<figure class="shot" data-shot="webmail-login"><picture><source srcset="../shots/webmail-login-dark.png" media="(prefers-color-scheme: dark)" /><img src="../shots/webmail-login.png" alt="The webmail sign-in page: the Rootiest Mail logo and a single Sign in with SSO button." loading="lazy" /></picture><figcaption>There's only the one button. Webmail always signs you in with RootiestID.</figcaption></figure>
+
+<p>Webmail keeps you signed in on that browser, so you won't have to do this every time. To sign out, open <strong>Settings</strong> → <strong>Account</strong> and click <strong>Sign out</strong>.</p>
 
 <aside class="note">
-  <p>The Username and Password boxes do work with an <a href="../app-passwords/">app password</a>, in case RootiestID is ever down. You won't need them day to day.</p>
+  <p>App passwords are only for mail apps like Thunderbird. Webmail never asks for one.</p>
 </aside>
 
-<p>Webmail signs you out after about an hour of not using it. Just click <strong>Login with RootiestID</strong> again.</p>
-
 <h2>Finding your way around</h2>
-<figure class="shot shot-pending" data-shot="webmail-inbox"><span class="shot-placeholder" role="img" aria-label="The webmail main screen: the menu on the far left, the folder list, the message list and the open message."><span class="shot-alt">The webmail main screen: the menu on the far left, the folder list, the message list and the open message.</span><span class="shot-id">Screenshot webmail-inbox coming soon</span></span><figcaption>From left to right: the main menu, your folders, the message list and the message you're reading.</figcaption></figure>
+<figure class="shot" data-shot="webmail-inbox"><picture><source srcset="../shots/webmail-inbox-dark.png" media="(prefers-color-scheme: dark)" /><img src="../shots/webmail-inbox.png" alt="The webmail main screen: the bar on the far left, the folder list, the message list and the open message." loading="lazy" /></picture><figcaption>From left to right: the bar that switches apps, your folders, the message list and the message you're reading.</figcaption></figure>
 <ul>
-  <li>The menu on the far left switches between <strong>Mail</strong>, <strong>Contacts</strong> and <strong>Settings</strong>. <strong>Compose</strong> at the top starts a new message.</li>
-  <li>Select a message and use the buttons above it to reply, forward, delete, archive it or mark it as junk. The <strong>Archive</strong> button needs to know which folder to use: pick one under <strong>Settings</strong> → <strong>Preferences</strong> → <strong>Special Folders</strong>.</li>
-  <li>Spam that gets caught lands in the <strong>Junk</strong> folder. It's worth a look now and then in case something real ended up there.</li>
-  <li>Attachments in webmail can be up to 25 MB.</li>
+  <li>The bar on the far left switches between <strong>Mail</strong>, <strong>Calendar</strong>, <strong>Contacts</strong> and <strong>Files</strong>. <strong>Settings</strong> is the gear near the bottom.</li>
+  <li><strong>Compose</strong> starts a new message. You can also press <kbd>c</kbd>, and <kbd>?</kbd> shows all the keyboard shortcuts.</li>
+  <li>Open a message and use the buttons above it to reply, forward, archive, move or delete it.</li>
+  <li>Spam that gets caught lands in the <strong>Spam</strong> folder. It's worth a look now and then in case something real ended up there.</li>
 </ul>
 
 <h3 id="folders">Folders</h3>
-<p>Make, rename and delete folders under <strong>Settings</strong> → <strong>Folders</strong>. Folders are stored on the server, so they show up in your mail apps too. If a folder you expect is missing in webmail or an app, check that it's subscribed (the switch next to it in <strong>Settings</strong> → <strong>Folders</strong>). Each app keeps its own list of subscribed folders.</p>
+<p>Click the <strong>+</strong> next to <strong>Your folders</strong> to make a new folder. To rename, move or delete folders, open <strong>Settings</strong> → <strong>Folders &amp; tags</strong>. Folders are stored on the server, so they show up in your mail apps too. If a folder you expect is missing in an app, check that it's subscribed there. Each app keeps its own list of subscribed folders.</p>
 
-<h2 id="contacts">Contacts</h2>
-<p>Under <strong>Contacts</strong> you'll see two kinds of address book:</p>
-<ul>
-  <li>The address books under <strong>Rootiest Mail</strong> hold the contacts stored on the mail server. These sync with your phone and computer if you set up <a href="../calendars-contacts/">contacts syncing</a>. Save contacts here.</li>
-  <li><strong>Personal Addresses</strong> only exists inside webmail and doesn't sync anywhere.</li>
-</ul>
-<p>Contacts you add on your phone or in Thunderbird can take up to 15 minutes to show up in webmail.</p>
+<h2 id="contacts">Contacts and calendars</h2>
+<p><strong>Contacts</strong> and <strong>Calendar</strong> in the left bar use the same address books and calendars as your phone and computer, once you set up <a href="../calendars-contacts/">calendar and contacts syncing</a>. A contact you add in webmail shows up on your phone and the other way around.</p>
 
 <h2 id="filters">Filters</h2>
 <p>Filters sort your mail as it arrives, for example moving everything from a mailing list into its own folder. They run on the server, so they work even when webmail and your apps are closed.</p>
 <ol>
-  <li>Open <strong>Settings</strong> → <strong>Filters</strong>.</li>
-  <li>Click <strong>Create</strong>, fill in the <strong>Filter name</strong>, and set the rule. For example: <em>From</em> <em>contains</em> <code>news@example.com</code>, then <em>Move message to</em> <em>Newsletters</em>.</li>
+  <li>Open <strong>Settings</strong> → <strong>Filters</strong> and click <strong>New rule</strong>.</li>
+  <li>Set what to look for. For example: <em>From</em> <em>contains</em> <code>news@example.com</code>.</li>
+  <li>Under <strong>Then</strong>, pick what happens. For example: tick <strong>Move to folder</strong> and choose <em>Newsletters</em>.</li>
   <li>Click <strong>Save</strong>.</li>
 </ol>
-<figure class="shot shot-pending" data-shot="webmail-filter"><span class="shot-placeholder" role="img" aria-label="The new filter form in webmail, with a rule that moves messages from one sender into a folder."><span class="shot-alt">The new filter form in webmail, with a rule that moves messages from one sender into a folder.</span><span class="shot-id">Screenshot webmail-filter coming soon</span></span><figcaption>A filter that moves one sender's mail into its own folder.</figcaption></figure>
+<figure class="shot" data-shot="webmail-filter"><picture><source srcset="../shots/webmail-filter-dark.png" media="(prefers-color-scheme: dark)" /><img src="../shots/webmail-filter.png" alt="The New rule form in webmail: if From contains news@example.com, then move the message to the Newsletters folder." loading="lazy" /></picture><figcaption>A rule that moves one sender's mail into its own folder.</figcaption></figure>
+
+<p>If you know Sieve (the language filters are written in), <strong>Edit rules as code</strong> lets you write them by hand.</p>
 
 <h2 id="out-of-office">Out of office replies</h2>
 <p>To answer mail automatically while you're away:</p>
 <ol>
-  <li>Open <strong>Settings</strong> → <strong>Out of Office</strong>.</li>
-  <li>Fill in the <strong>Subject</strong> and <strong>Body</strong>. If you know when you'll be back, set the <strong>Start time</strong> and <strong>End time</strong> and it turns itself on and off.</li>
-  <li>Set <strong>Status</strong> to <strong>On</strong> and click <strong>Save</strong>. When you're back (and didn't set an end time), set it to <strong>Off</strong> again.</li>
+  <li>Open <strong>Settings</strong> → <strong>Out of office</strong>.</li>
+  <li>Write the <strong>Subject</strong> and <strong>Message</strong> people get back. If you know when you'll be away, fill in <strong>From</strong> and <strong>Until</strong> and it turns itself on and off.</li>
+  <li>Turn on <strong>Reply automatically</strong>. When you're back (and didn't set an end date), turn it off again.</li>
 </ol>
-<figure class="shot shot-pending" data-shot="webmail-out-of-office"><span class="shot-placeholder" role="img" aria-label="The Out of Office settings in webmail with a subject, a message and start and end dates."><span class="shot-alt">The Out of Office settings in webmail with a subject, a message and start and end dates.</span><span class="shot-id">Screenshot webmail-out-of-office coming soon</span></span><figcaption>The <strong>Out of Office</strong> settings.</figcaption></figure>
+<figure class="shot" data-shot="webmail-out-of-office"><picture><source srcset="../shots/webmail-out-of-office-dark.png" media="(prefers-color-scheme: dark)" /><img src="../shots/webmail-out-of-office.png" alt="The Out of office settings in webmail: the Reply automatically switch, who to reply to, optional start and end dates, and the subject and message of the reply." loading="lazy" /></picture><figcaption>The <strong>Out of office</strong> settings. <strong>Reply to</strong> can limit replies to people you know.</figcaption></figure>
 
 <aside class="note">
   <p>Your account page at mail.rootiest.dev also has sections for mail rules and a vacation response. Please stick to webmail for filters and out-of-office replies so you only have one set of rules to keep track of.</p>
 </aside>
 
 <h2 id="sending-from-another-address">Sending from another address</h2>
-<p>If you have an <a href="../addresses/">alias</a>, you can send from it. Go to <strong>Settings</strong> → <strong>Identities</strong>, click <strong>Create</strong>, and put the alias in the <strong>Email</strong> box. When you write a message, pick it in the <strong>From</strong> menu.</p>
+<p>If you have an <a href="../addresses/">alias</a>, you can send from it:</p>
+<ol>
+  <li>Open <strong>Settings</strong> → <strong>Account</strong> and click <strong>Edit addresses…</strong> under <strong>Email addresses</strong>.</li>
+  <li>Click <strong>Add address</strong>, put the alias in <strong>Email address</strong>, and click <strong>Save</strong>. You can give it its own name and signature too.</li>
+  <li>When you write a message, click <strong>From</strong> and pick the alias.</li>
+</ol>
+<p>To have replies go out from whichever address the mail was sent to, turn on <strong>Reply from the address it was sent to</strong> under <strong>Settings</strong> → <strong>Composing</strong>. <a href="../addresses/#masked-addresses">Masked addresses</a> can't be used here, because they only receive.</p>
+
+<h2 id="app-and-notifications">Installing it as an app</h2>
+<p>Your browser can install webmail like an app, with its own window and icon. Click <strong>Install</strong> when webmail offers it, or use your browser's install option. On an iPhone, open it in Safari, tap the share button and pick <strong>Add to Home Screen</strong>.</p>
+<p>Webmail can also tell you about new mail when it's closed. Click <strong>Turn on for this device</strong> when it asks, or turn it on later under <strong>Settings</strong> → <strong>Notifications</strong>. The notifications go through our own server and never include your mail.</p>
 
         <nav class="pager" aria-label="Previous and next page"><a class="prev" href="../sign-in/"><span>Previous</span>Your account and signing in</a><a class="next" href="../app-passwords/"><span>Next</span>App passwords</a></nav>
       </main>
