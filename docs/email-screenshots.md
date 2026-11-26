@@ -16,7 +16,10 @@ Until a file exists, the page shows a placeholder in its place.
   is not enough.
 - **Size:** crop tightly to the part the caption talks about. Desktop shots at 100% zoom, roughly 1000 to 1400 px wide after the crop.
   Phone shots at the phone's own resolution, cropped to the relevant part of the screen. PNG, run through `oxipng` or similar.
-- **Theme:** light mode, so the pictures match each other.
+- **Theme:** take every shot twice, in light mode and in dark mode, with everything else the same (state, crop, hidden
+  details). The light one is `<id>.png`, the dark one `<id>-dark.png`. The page shows the one that matches the reader's system
+  theme; until the dark file exists everyone sees the light one. `scripts/build.py` lists the shots still missing their dark
+  version (`no dark screenshot:`). For apps without a dark mode, the light file alone is fine.
 - **Alt text and captions** are already in the pages. If a new picture shows something different, update the page's `alt` and
   `figcaption` too.
 
@@ -37,6 +40,7 @@ Until a file exists, the page shows a placeholder in its place.
 | `thunderbird-android-address` | thunderbird-android | Thunderbird for Android's first account screen with the address typed in | phone (Android) | the form area, status bar cut off | the address |
 | `thunderbird-android-found` | thunderbird-android | the screen showing the incoming and outgoing servers it found (mx.rootiest.dev) | phone (Android) | the server details | the address |
 | `thunderbird-android-password` | thunderbird-android | the password screen with the box filled (dots) | phone (Android) | the form area | the address |
+| `masked-address-list` | addresses | webmail.rootiest.dev Settings → Password & sign-in, scrolled to **Masked addresses**, with one address listed (description e.g. "Newsletter sign-up", a website filled) and the create form below it | workstation (browser) | the Masked addresses section: the list and the create form | your real masked addresses (make a fresh one for the shot, delete it after) |
 | `davx5-login` | calendars-contacts | DAVx⁵ add account → Login with URL and user name, with Base URL `https://mx.rootiest.dev/` and the user name filled | phone (Android) | the form | the address |
 | `ios-mail-other` | apple | iPhone Settings → Apps → Mail → Mail Accounts → Add Account → Other, showing **Add Mail Account** | phone (iPhone) | the list | other accounts on the device |
 | `ios-mail-servers` | apple | the New Account screen after Next: IMAP selected, Incoming and Outgoing Mail Server both filled with mx.rootiest.dev | phone (iPhone) | both server sections | name, address, description |

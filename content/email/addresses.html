@@ -1,5 +1,5 @@
-<!-- title: Aliases and plus addresses -->
-<!-- description: Extra addresses for your mailbox, and how to use name+tag addresses to sort mail and spot leaks. -->
+<!-- title: Aliases, plus and masked addresses -->
+<!-- description: Extra addresses for your mailbox: name+tag addresses to sort mail and spot leaks, and masked addresses that hide who you are. -->
 <!-- order: 110 -->
 
 <h2>Plus addresses</h2>
@@ -16,6 +16,29 @@
 </aside>
 
 <p>Replies you send still come from your normal address unless you change it, so the tag stays private to whoever you gave it to.</p>
+
+<h2 id="masked-addresses">Masked addresses</h2>
+<p>A masked address is a random throwaway address that delivers to your mailbox, like <code>80j7sm2nyecsbsir.a4v3rm1nbehew47rg3h6etn1@rootiest.org</code>. Nothing in it points back to you. That's the difference from a plus address: anyone can work out your real address from <code>sam+shop@rootiest.org</code>, while a masked one gives nothing away. They're best for sign-ups, newsletters and one-off forms where you only need to receive mail.</p>
+
+<p>To make one in <a href="../webmail/">webmail</a>:</p>
+<ol>
+  <li>Open <strong>Settings</strong> → <strong>Password &amp; sign-in</strong> and scroll down to <strong>Masked addresses</strong>.</li>
+  <li>Pick the domain, and if you like, note the website and a description, so you remember later where you used it.</li>
+  <li>Click <strong>Create masked address</strong>, then <strong>Copy</strong> to put it on your clipboard.</li>
+</ol>
+
+<figure class="shot" data-shot="masked-address-list"><img src="../shots/masked-address-list.png" alt="The Masked addresses section in webmail settings: a list with one address, its description, website and state, and the form to create another."><figcaption>Your masked addresses, with the website and description you gave each one. <strong>Edit</strong> turns one off or deletes it.</figcaption></figure>
+
+<p>Before you use one, know what it can't do:</p>
+<ul>
+  <li><strong>You can't send from it.</strong> Masked addresses only receive.</li>
+  <li><strong>Replying shows your real address.</strong> If you answer mail that came in on a masked address, the reply comes from your normal one. When you'll need to write back, use a plus address instead.</li>
+  <li><strong>You can have up to 5.</strong> Turned-off addresses may still count, so delete the ones you're done with.</li>
+</ul>
+
+<p>When a masked address starts getting spam, open <strong>Edit</strong> and turn it off. New mail to it bounces as if the address never existed, so the sender can't tell it was ever yours. Delete it if you won't want it back.</p>
+
+<p>Mail that arrives on a masked address shows it in the <em>To</em> line, so a <a href="../webmail/#filters">filter</a> on <em>To</em> can sort it like a plus address.</p>
 
 <h2>Aliases</h2>
 <p>An alias is a second address that delivers to your same mailbox, like a nickname. Unlike plus addresses, aliases are set up for you: if you'd like one, ask on the <a href="https://support.rootiest.dev">support desk</a> and say which address you want. I approve each one by hand, so it may take a day or two.</p>
