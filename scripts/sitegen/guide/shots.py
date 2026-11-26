@@ -1,6 +1,6 @@
 # Copyright (C) 2026 Chris Laprade (chris@rootiest.com)
 # SPDX-License-Identifier: AGPL-3.0-or-later
-"""Screenshots in guide pages: point them at shots/, or show a placeholder until the image exists."""
+"""Screenshots in guide pages: point them at shots/ (with a dark-mode version when there is one), or show a placeholder until the image exists."""
 import re
 from html import escape
 from html.parser import HTMLParser
@@ -45,6 +45,12 @@ def _guide_path(src, where):
     return rest
 
 
+def dark_name(rel):
+    """Return the dark-mode file of the screenshot REL: shots/ID.png becomes shots/ID-dark.png."""
+    stem, dot, ext = rel.rpartition(".")
+    return f"{stem}-dark.{ext}" if dot else f"{rel}-dark"
+
+
 def render_shots(body, depth, shots_dir, where="page"):
     """
     SYNOPSIS
@@ -57,7 +63,9 @@ def render_shots(body, depth, shots_dir, where="page"):
         the correct relative path for a page DEPTH folders below the guide root.
         When the file is not in SHOTS_DIR yet, the image is replaced by a
         placeholder showing the alt text and the shot id, so the page never
-        shows a broken image. Returns the new HTML and the list of pending
+        shows a broken image. When the dark-mode version (dark_name: ID-dark.png
+        beside it) exists too, the image becomes a <picture> that shows it to
+        readers whose system is in dark mode. Returns the new HTML and the list of pending
         (id, file) pairs. Raises ShotError for a figure without an id, an img,
         an alt text, or with a src outside shots/.
     EXAMPLE
@@ -85,6 +93,10 @@ def render_shots(body, depth, shots_dir, where="page"):
             width = f' width="{escape(ia["width"])}"' if ia.get("width") else ""
             height = f' height="{escape(ia["height"])}"' if ia.get("height") else ""
             new = f'<img src="{prefix}{escape(rel)}" alt="{escape(alt)}"{width}{height} loading="lazy" />'
+            dark = dark_name(rel)
+            if (shots_dir / dark[len("shots/"):]).is_file():
+                new = (f'<picture><source srcset="{prefix}{escape(dark)}" media="(prefers-color-scheme: dark)" />'
+                       f'{new}</picture>')
             cls = "shot"
         else:
             pending.append((sid, rel))

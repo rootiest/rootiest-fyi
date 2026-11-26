@@ -16,7 +16,10 @@ Until a file exists, the page shows a placeholder in its place.
   is not enough.
 - **Size:** crop tightly to the part the caption talks about. Desktop shots at 100% zoom, roughly 1000 to 1400 px wide after the crop.
   Phone shots at the phone's own resolution, cropped to the relevant part of the screen. PNG, run through `oxipng` or similar.
-- **Theme:** light mode, so the pictures match each other.
+- **Theme:** take every shot twice, in light mode and in dark mode, with everything else the same (state, crop, hidden
+  details). The light one is `<id>.png`, the dark one `<id>-dark.png`. The page shows the one that matches the reader's system
+  theme; until the dark file exists everyone sees the light one. `scripts/build.py` lists the shots still missing their dark
+  version (`no dark screenshot:`). For apps without a dark mode, the light file alone is fine.
 - **Alt text and captions** are already in the pages. If a new picture shows something different, update the page's `alt` and
   `figcaption` too.
 
