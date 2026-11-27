@@ -178,7 +178,13 @@ img {
   width: 7rem;
   height: 7rem;
   margin-bottom: 1.25rem;
-  filter: drop-shadow(0 12px 32px rgb(255 0 76 / 25%));
+  /* The glow takes the logo's main colour: rootiest-docs violet, or rootiest-mail pink. */
+  --logo-glow: rgb(149 91 254 / 25%);
+  filter: drop-shadow(0 12px 32px var(--logo-glow));
+}
+
+.hero-logo.logo-mail {
+  --logo-glow: rgb(225 49 199 / 25%);
 }
 
 .hero.compact .hero-logo {

@@ -7,10 +7,11 @@ from ..html.head import head
 from ..html.header import header
 
 
-def _page(title, home, lede, image, image_alt, app_name):
-    """Return a 404 page. It is served at any path, so local files are root-relative."""
+def _page(title, home, lede, image, image_alt, app_name, logo_class="hero-logo"):
+    """Return a 404 page. It is served at any path, so local files are root-relative.
+    LOGO_CLASS styles /favicon.svg, which is a different icon at each address."""
     main = f"""    <section class="hero compact">
-      <img src="/favicon.svg" alt="" class="hero-logo" width="72" height="72" />
+      <img src="/favicon.svg" alt="" class="{logo_class}" width="72" height="72" />
       <h1>Page not found</h1>
       <p class="lede">{lede}</p>
       <div class="actions">
@@ -46,5 +47,5 @@ def build(with_guide=True):
         out[f"{config.GUIDE_DIR}/404.html"] = _page(
             config.GUIDE_TITLE, config.GUIDE_URL + "/",
             "That page isn't part of the guide, or it moved. Start again from the guide's first page.",
-            config.GUIDE_IMAGE, config.GUIDE_IMAGE_ALT, config.GUIDE_APP_NAME)
+            config.GUIDE_IMAGE, config.GUIDE_IMAGE_ALT, config.GUIDE_APP_NAME, "hero-logo logo-mail")
     return out
