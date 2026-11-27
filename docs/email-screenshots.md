@@ -31,9 +31,9 @@ Until a file exists, the page shows a placeholder in its place.
 | `webmail-inbox` | webmail | the main mail screen in light mode: the left bar, folder list, message list and an open message (a "Welcome to Rootiest Mail" message to yourself works well) | workstation (browser) | the whole app window, browser chrome cut off | message previews, subjects and senders you'd rather not show; paint them over with the row's own background |
 | `webmail-filter` | webmail | Settings → Filters → **New rule**: From contains `news@example.com`, **Move to folder** ticked with `Newsletters` | workstation (browser) | the New rule dialog | folder names other than the example (only the picked folder shows once the list is closed) |
 | `webmail-out-of-office` | webmail | Settings → Out of office, scrolled so Reply automatically, Reply to, From, Until, Subject and Message all show; leave it off (the page saves as you go) | workstation (browser) | from Reply automatically down to the Message box | nothing personal with the default text |
-| `app-password-list` | app-passwords | mail.rootiest.dev/account, signed in, menu open at Credentials → App Passwords, list visible with the **Create App password** button | workstation (browser) | the menu and the list | descriptions of your real app passwords, your address in the header |
-| `app-password-create` | app-passwords | the Create App password form with Description "Thunderbird on my laptop", Permissions left at "Same permissions as account", Expiration Date and Allowed IPs empty | workstation (browser) | the form, all three sections | your address in the header |
-| `app-password-created` | app-passwords | the screen right after Create, saying "Created successfully" and showing the Secret | workstation (browser) | the message and the secret field | **the secret: paint it over completely**, then delete that app password straight away |
+| `app-password-list` | app-passwords | webmail.rootiest.dev Settings → Password & sign-in, scrolled to **App passwords**, with the **New app password** button and the list | workstation (browser) | the App passwords section | descriptions of your real app passwords |
+| `app-password-create` | app-passwords | the same section after **New app password**: App name "Thunderbird on my laptop", More options left closed, the **Create** button | workstation (browser) | the form | nothing personal with the example name |
+| `app-password-created` | app-passwords | the box right after Create, showing the new app password with its copy button and **Done** | workstation (browser) | the box | **the app password: paint it over completely**, then delete that app password straight away |
 | `thunderbird-setup` | thunderbird | Thunderbird's "Set up your existing email address" screen with Your full name, Email address and Password filled | workstation (Thunderbird) | the form | real name (use "Sam Example"), the address (use the test account), password dots are fine |
 | `thunderbird-found` | thunderbird | the next screen: configuration found, IMAP selected, mx.rootiest.dev for incoming and outgoing, **Done** button | workstation (Thunderbird) | the found-settings panel and the Done button | the address |
 | `thunderbird-calendar` | thunderbird | New Calendar → On the Network, with Username and Location `https://mx.rootiest.dev/dav/cal/` filled | workstation (Thunderbird) | the dialog | the address |
@@ -55,6 +55,6 @@ without them, and the placeholders stay until someone with the device takes them
 
 ## After an app update
 
-When a screen changes (a new Thunderbird, a Stalwart or Roundcube upgrade, a new iOS), retake its shots and check the steps on the
-page still match the labels. The Stalwart account page labels come from Stalwart's schema, so check `app-password-*` after every
-Stalwart upgrade. The webmail labels come from Roundcube and its managesieve plugin.
+When a screen changes (a new Thunderbird, a webmail upgrade, a new iOS), retake its shots and check the steps on the page still
+match the labels. The webmail labels, `app-password-*` and `masked-address-list` included, come from Bulwark's English strings, so
+check them after every webmail upgrade.
