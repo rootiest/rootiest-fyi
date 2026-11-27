@@ -78,8 +78,11 @@ def build(content=None, shots_dir=None):
             body = f"<h1>{escape(page.title)}</h1>\n{body}"
         title = config.GUIDE_TITLE if page.slug == "" else f"{page.title} - {config.GUIDE_TITLE}"
         url = f"{config.GUIDE_URL}/{page.path}"
+        # Root-relative on purpose: at email.rootiest.fyi it is the guide's own
+        # manifest, at rootiest.fyi/email/ the hub's, so there the guide offers
+        # the Rootiest Docs app (whose scope holds it) instead of a second app.
         html = (head(title, page.description, url, up, config.GUIDE_IMAGE, config.GUIDE_IMAGE_ALT,
-                     config.GUIDE_TITLE)
+                     config.GUIDE_TITLE, manifest="/manifest.webmanifest", app_name=config.GUIDE_APP_NAME)
                 + header(config.GUIDE_TITLE, up or "./", up + "favicon.svg",
                          [(config.HUB_URL + "/", "All docs"), (config.SUPPORT_URL + "/", "Support")])
                 + '\n  <div class="wrap guide-layout">\n'

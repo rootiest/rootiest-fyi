@@ -16,13 +16,15 @@ which come from [icons.rootiest.fyi](https://icons.rootiest.fyi).
 | `site/` | The web root. Everything in it is published, nothing outside it is |
 | `site/assets/site.css` | Styles: Catppuccin Latte (light) and Mocha (dark), following the system setting |
 | `site/email/shots/` | The guide's screenshots, added by hand |
+| `site/icons/`, `site/email/icons/` | The installed apps' icons, copied by hand from rootiest-icons |
 | `scripts/build.py` | Generates the pages into `site/` |
 | `scripts/check.py` | Checks `site/`: up to date, no broken links, no third-party scripts |
 | `scripts/sitegen/` | The generator: catalog reader, guide renderer, HTML building blocks |
 | `tests/` | Tests, with a small fixture guide in `tests/fixtures/` |
 
-Every `.html` file in `site/` and `site/email/assets/site.css` are generated. Never edit them by hand:
-edit the sources and rebuild. Everything else in `site/` (favicons, screenshots) is kept by hand.
+Every `.html` and `.webmanifest` file in `site/` and `site/email/assets/site.css` are generated. Never
+edit them by hand: edit the sources and rebuild. Everything else in `site/` (favicons, app icons,
+screenshots) is kept by hand.
 
 ## Build and check
 
@@ -43,6 +45,10 @@ subset of YAML so the build needs no extra Python packages: if a value has `: ` 
 with a special character, put it in double quotes. The build stops and names the line when something
 doesn't fit. Run `python3 scripts/check.py --online` to make sure the new URL and its icon load.
 
+Give a site a `shortcut` name to list it in the installed app's shortcut menu (long-press the icon on
+Android, right-click it on the desktop). Sites on other hosts open through a `go/<label>/` page that
+redirects to them, because a shortcut must stay inside the app's own site.
+
 Every site on `rootiest.fyi` should be in the catalog. A check in the private infrastructure repo compares
 it with the list of `.fyi` sites there and reports any that are missing.
 
@@ -56,6 +62,9 @@ Each page is a fragment in `content/email/`. `index.html` is the guide's first p
 <!-- description: One sentence for search results and link previews. -->
 <!-- order: 20 -->
 ```
+
+An optional fourth, `<!-- shortcut: Phone setup -->`, lists the page in the installed guide app's
+shortcut menu under that short name.
 
 The pages are listed by `order`. The build adds the page's title as its `<h1>`, unless the fragment has an
 `<h1>` of its own.
@@ -86,6 +95,13 @@ Pushes to `main` on [git.rootiest.dev](https://git.rootiest.dev/rootiest/rooties
 static web root (`pages/rootiest-fyi`), live within a few minutes on both edges. Caddy serves that folder
 at `rootiest.fyi`, and its `email/` folder at `email.rootiest.fyi`. `docs.rootiest.fyi` and
 `www.rootiest.fyi` redirect to `rootiest.fyi`.
+
+## Installing as an app
+
+Both sites install as apps (web apps, no store): **Rootiest Docs** from `rootiest.fyi`, shown as "Docs"
+under its icon, and the **Rootiest Mail guide** from `email.rootiest.fyi`, shown as "Mail guide". Use the
+browser's install button or menu (Chrome: *Install app*; Safari on iOS: *Share*, *Add to Home Screen*).
+The guide's pages at `rootiest.fyi/email/` offer Rootiest Docs, which already includes them.
 
 ## License
 

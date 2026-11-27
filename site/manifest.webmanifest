@@ -1,0 +1,104 @@
+{
+  "name": "Rootiest Docs",
+  "short_name": "Docs",
+  "description": "Guides, cheatsheets, icons and shared files from Rootiest, all in one place.",
+  "lang": "en-US",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#1e1e2e",
+  "theme_color": "#1e1e2e",
+  "categories": [
+    "books",
+    "education",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "icons/docs-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/docs-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/docs-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Rootiest Mail guide",
+      "short_name": "Mail guide",
+      "description": "Setting up and using a Rootiest Mail address, in the browser, on your phone and in desktop mail apps.",
+      "url": "email/",
+      "icons": [
+        {
+          "src": "https://icons.rootiest.fyi/color/raster/rootiest-mail/rootiest-mail-96px.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Git over SSH",
+      "short_name": "Git over SSH",
+      "description": "How to clone and push to git.rootiest.dev over SSH, and how to check you're talking to the real server.",
+      "url": "go/ssh/",
+      "icons": [
+        {
+          "src": "https://icons.rootiest.fyi/color/raster/rootiest-gitea-ssh/rootiest-gitea-ssh-96px.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Neovim cheatsheet",
+      "short_name": "Neovim",
+      "description": "Every Vim motion, built-in key and keymap in my Neovim config, searchable and laid out on a keyboard.",
+      "url": "go/nvim/",
+      "icons": [
+        {
+          "src": "https://icons.rootiest.fyi/color/raster/rootiest-nvim/rootiest-nvim-96px.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Q5 Max keyboard cheatsheet",
+      "short_name": "Keyboard",
+      "description": "The layers, keys, chords and shortcuts of my Keychron Q5 Max keymap, on an interactive keyboard.",
+      "url": "go/qmk/",
+      "icons": [
+        {
+          "src": "https://icons.rootiest.fyi/color/raster/rootiest-keeb/rootiest-keeb-96px.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Fish config manual",
+      "short_name": "Fish config",
+      "description": "The reference manual for my fish shell config, with every function, what it does and how to use it.",
+      "url": "go/fish/",
+      "icons": [
+        {
+          "src": "https://icons.rootiest.fyi/color/raster/rootiest-fish-config/rootiest-fish-config-96px.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
+}

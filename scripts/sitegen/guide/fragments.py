@@ -22,6 +22,7 @@ class Fragment:
     description: str
     order: int
     body: str          # the HTML after the header comments
+    shortcut: str = ""  # the page's name in the app's shortcut menu, if it has one
 
     @property
     def depth(self):
@@ -48,6 +49,8 @@ def read_fragment(path):
             <!-- title: Page title -->
             <!-- description: One sentence. -->
             <!-- order: 10 -->
+        and optionally <!-- shortcut: Name --> to list the page in the
+        installed app's shortcut menu under that (short) name.
         index.html is the landing page (slug ""); any other file's slug is its
         name without .html, and must be lower-case letters, digits and hyphens.
         Raises FragmentError on a missing or malformed header.
@@ -73,7 +76,8 @@ def read_fragment(path):
     slug = "" if path.name == "index.html" else path.stem
     if slug and not SLUG.match(slug):
         raise FragmentError(f"{path}: file name must be lower-case letters, digits and hyphens")
-    return Fragment(slug, meta["title"], meta["description"], int(meta["order"]), text.strip("\n") + "\n")
+    return Fragment(slug, meta["title"], meta["description"], int(meta["order"]), text.strip("\n") + "\n",
+                    meta.get("shortcut", ""))
 
 
 def read_guide(folder):

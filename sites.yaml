@@ -18,7 +18,9 @@
 #   category     one of the categories below
 #   order        position within the category (lowest first)
 #   optional: tags [list], repo (source URL), status (a short badge such as New),
-#             links (list of title + url), aliases (other host names that serve the same site)
+#             links (list of title + url), aliases (other host names that serve the same site),
+#             shortcut (a short name: lists the site in the installed Docs app's shortcut menu, in hub order;
+#             Android launchers show only the first four)
 
 categories:
   - name: Guides
@@ -37,6 +39,7 @@ sites:
     title: Rootiest Mail guide
     description: Setting up and using a Rootiest Mail address, in the browser, on your phone and in desktop mail apps.
     icon: icons.rootiest.fyi/color/rootiest-mail.svg
+    shortcut: Mail guide
     category: Guides
     order: 10
     status: New
@@ -48,6 +51,7 @@ sites:
     title: Git over SSH
     description: How to clone and push to git.rootiest.dev over SSH, and how to check you're talking to the real server.
     icon: icons.rootiest.fyi/color/rootiest-gitea-ssh.svg
+    shortcut: Git over SSH
     category: Guides
     order: 20
     tags: [git, ssh]
@@ -59,6 +63,7 @@ sites:
     title: Neovim cheatsheet
     description: Every Vim motion, built-in key and keymap in my Neovim config, searchable and laid out on a keyboard.
     icon: icons.rootiest.fyi/color/rootiest-nvim.svg
+    shortcut: Neovim
     category: Reference
     order: 10
     tags: [neovim]
@@ -69,6 +74,7 @@ sites:
     title: Q5 Max keyboard cheatsheet
     description: The layers, keys, chords and shortcuts of my Keychron Q5 Max keymap, on an interactive keyboard.
     icon: icons.rootiest.fyi/color/rootiest-keeb.svg
+    shortcut: Keyboard
     category: Reference
     order: 20
     tags: [qmk, keyboard]
@@ -78,6 +84,7 @@ sites:
     title: Fish config manual
     description: The reference manual for my fish shell config, with every function, what it does and how to use it.
     icon: icons.rootiest.fyi/color/rootiest-fish-config.svg
+    shortcut: Fish config
     category: Reference
     order: 30
     tags: [fish, shell]

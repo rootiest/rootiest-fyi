@@ -30,6 +30,17 @@ GUIDE_TITLE = "Rootiest Mail guide"
 GUIDE_IMAGE = f"{CARDS}/mail.png"
 GUIDE_IMAGE_ALT = "Rootiest Mail: set up mail, calendars and contacts"
 
+# Installed-app names: the full name shows in app lists and title bars, the
+# short one under the launcher icon.
+HUB_APP_NAME = "Docs"
+GUIDE_APP_NAME = "Mail guide"
+# The manifests' splash and title-bar colour, and the maskable icons' background:
+# Catppuccin Mocha base.
+APP_BACKGROUND = "#1e1e2e"
+# Hub shortcuts to sites on other hosts open go/<label>/, which redirects there:
+# a manifest shortcut must stay inside the app's scope.
+GO_DIR = "go"
+
 ENTITY = "Rootiest Solutions LLC"
 YEAR = 2026
 
