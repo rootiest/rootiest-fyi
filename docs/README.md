@@ -13,8 +13,10 @@ generator fits together.
 | `site/404.html`, `site/email/404.html` | `sitegen/pages/not_found.py` |
 | `site/email/index.html`, `site/email/<slug>/index.html` | `content/email/*.html`, by `sitegen/pages/guide.py` |
 | `site/email/assets/site.css` | a copy of `site/assets/site.css` |
+| `site/manifest.webmanifest`, `site/go/<label>/index.html` | `sites.yaml` and `config.py`, by `sitegen/pages/app.py` |
+| `site/email/manifest.webmanifest` | the guide's first page and `shortcut` comments, by `sitegen/pages/app.py` |
 
-The guide and its two 404 pages are only built when `content/email/` has pages.
+The guide, its manifest and its two 404 pages are only built when `content/email/` has pages.
 
 ## The catalog format
 
@@ -36,6 +38,23 @@ stays inside `site/email/`, which has its own favicons and its own copy of the s
 are the exception: they're served at any path, so they use root-relative `/assets/site.css` and
 `/favicon.svg`, which exist at both roots. `scripts/check.py` enforces both rules. The canonical address
 of every guide page is on `email.rootiest.fyi`.
+
+## The apps
+
+Each manifest's scope is its own folder, and every URL in it is relative to the manifest, so the hub's
+app covers all of `rootiest.fyi` (the guide's copy at `/email/` included) and the guide's app covers
+`email.rootiest.fyi`. Guide pages and the 404 pages link the manifest root-relative,
+`/manifest.webmanifest`: at `email.rootiest.fyi` that is the guide's own, at `rootiest.fyi/email/` the
+hub's. So the guide on the hub's address offers the Docs app, not a second guide app inside its scope.
+It is the only root-relative link on guide pages, and `scripts/check.py` makes sure it exists at both.
+
+The site runs no JavaScript, so there is no service worker and no offline copy: Chromium browsers no
+longer need one to install an app. Installing uses the browser's own button, not one on the page.
+
+A shortcut must lie inside the app's scope, so the hub's shortcuts to sites on other hosts open
+`go/<label>/`, a page whose `<meta http-equiv="refresh">` sends the visitor on. Android launchers show
+the first four shortcuts, desktop Chrome up to ten. `scripts/check.py` checks each manifest's icons,
+start URL and shortcuts.
 
 ## Screenshots
 

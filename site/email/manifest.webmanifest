@@ -1,0 +1,59 @@
+{
+  "name": "Rootiest Mail guide",
+  "short_name": "Mail guide",
+  "description": "How to sign in to Rootiest Mail, read it on the web, and set it up in your mail apps.",
+  "lang": "en-US",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#1e1e2e",
+  "theme_color": "#1e1e2e",
+  "categories": [
+    "books",
+    "education",
+    "utilities"
+  ],
+  "icons": [
+    {
+      "src": "icons/mail-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/mail-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/mail-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Webmail",
+      "short_name": "Webmail",
+      "url": "webmail/"
+    },
+    {
+      "name": "App passwords",
+      "short_name": "App passwords",
+      "url": "app-passwords/"
+    },
+    {
+      "name": "Setting up a mail app",
+      "short_name": "Mail app setup",
+      "url": "setup/"
+    },
+    {
+      "name": "Getting help",
+      "short_name": "Get help",
+      "url": "help/"
+    }
+  ]
+}

@@ -51,7 +51,8 @@ def build(catalog=None):
 
 """ + "\n".join(_section(i, c) for i, c in enumerate(cats))
     page = (head(config.HUB_TITLE, config.HUB_DESC, config.HUB_URL + "/", "", config.HUB_IMAGE,
-                 config.HUB_IMAGE_ALT, config.HUB_TITLE)
+                 config.HUB_IMAGE_ALT, config.HUB_TITLE, manifest="manifest.webmanifest",
+                 app_name=config.HUB_APP_NAME)
             + header(config.HUB_TITLE, "./", "favicon.svg", config.NAV)
             + f'\n  <main id="main" class="wrap">\n{main}  </main>\n\n'
             + footer([lk for lk in config.FOOTER_LINKS if not lk[0].startswith(config.HUB_URL)]))

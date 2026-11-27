@@ -16,7 +16,11 @@ Fails (exit 1) when:
   - a page loads a script, stylesheet, frame or font from another site, or an
     image from anywhere but icons.rootiest.fyi or pages.rootiest.fyi;
   - a page lacks lang, <title>, a meta description or a canonical link;
-  - an in-page #fragment has no matching id.
+  - an in-page #fragment has no matching id;
+  - a web app manifest is not valid JSON, lacks a name, a short name of at
+    most 12 characters, standalone display or its 192 px, 512 px and
+    maskable icons, or lists an icon, start URL or shortcut that is missing,
+    outside the app's scope or on another site.
 
 Screenshots the guide refers to that are not in site/email/shots/ yet are
 listed as pending; they show a placeholder and never fail the check.
@@ -26,6 +30,7 @@ answer 200 (after redirects). CI does not use it; run it before a release.
 The other options point the check at a test build (tests/run-tests.sh).
 """
 import argparse
+import json
 import filecmp
 import re
 import subprocess
@@ -123,6 +128,52 @@ def check_refs(p, parser, site, pages, problems):
                 problems.append(f"{rel}: no #{frag} in {f.relative_to(site.parent)}")
 
 
+def check_manifest(m, site, problems):
+    """Check the web app manifest M under SITE and append problems."""
+    rel = m.relative_to(site.parent)
+    try:
+        data = json.loads(m.read_text())
+    except ValueError as e:
+        problems.append(f"{rel}: not JSON ({e})")
+        return
+    if not data.get("name") or not 0 < len(data.get("short_name", "")) <= 12:
+        problems.append(f"{rel}: needs a name and a short_name of 1 to 12 characters (launchers cut longer ones)")
+    if data.get("display") != "standalone":
+        problems.append(f"{rel}: display must be standalone")
+    scope = (m.parent / data.get("scope", "./")).resolve()
+
+    def local(url, what, in_scope):
+        u = urlsplit(url)
+        if u.scheme or url.startswith("/"):
+            if what == "icon" and u.scheme == "https" and u.hostname in IMAGE_HOSTS:
+                return
+            problems.append(f"{rel}: {what} {url} is not a relative path to a file next to the manifest")
+            return
+        f = (m.parent / unquote(u.path)).resolve()
+        if in_scope and f != scope and scope not in f.parents:
+            problems.append(f"{rel}: {what} {url} is outside the scope {data.get('scope')}")
+        if url.endswith("/") or f.is_dir():
+            f = f / "index.html"
+        if not f.is_file():
+            problems.append(f"{rel}: broken {what} {url}")
+
+    icons = data.get("icons", [])
+    have = {(i.get("sizes"), i.get("purpose", "any")) for i in icons}
+    for need in (("192x192", "any"), ("512x512", "any"), ("512x512", "maskable")):
+        if need not in have:
+            problems.append(f"{rel}: no {need[0]} {need[1]} icon")
+    local(data.get("start_url", ""), "start_url", True)
+    for i in icons:
+        local(i.get("src", ""), "icon", False)
+    for s in data.get("shortcuts", []):
+        if not s.get("name") or not s.get("url"):
+            problems.append(f"{rel}: a shortcut needs a name and a url")
+            continue
+        local(s["url"], "shortcut", True)
+        for i in s.get("icons", []):
+            local(i.get("src", ""), "icon", False)
+
+
 def online(catalog, problems):
     """Fetch every catalog URL and icon; append a problem for any that does not answer 200."""
     from sitegen.catalog.load import load
@@ -190,6 +241,10 @@ def main():
             problems.append(f"{rel}: missing lang or meta description")
         check_refs(p, parser, site, pages, problems)
 
+    manifests = sorted(site.rglob("*.webmanifest"))
+    for m in manifests:
+        check_manifest(m, site, problems)
+
     for css in site.rglob("*.css"):
         for ref in re.findall(r"url\(([^)]+)\)", css.read_text()):
             ref = ref.strip("'\"")
@@ -203,7 +258,7 @@ def main():
         print(line)
     for line in problems:
         print(line)
-    print(f"{len(pages)} pages checked, {len(problems)} problem(s), {len(pending)} screenshot(s) pending")
+    print(f"{len(pages)} pages and {len(manifests)} manifests checked, {len(problems)} problem(s), {len(pending)} screenshot(s) pending")
     sys.exit(1 if problems else 0)
 
 

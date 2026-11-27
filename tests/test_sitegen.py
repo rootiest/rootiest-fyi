@@ -6,6 +6,7 @@
 Run: python3 tests/test_sitegen.py   (tests/run-tests.sh runs it)
 The guide is rendered from the fixture in tests/fixtures/email/, never from content/email/.
 """
+import json
 import re
 import shutil
 import subprocess
@@ -75,6 +76,10 @@ class LoadTests(unittest.TestCase):
         cats = self._load("categories:\n  - name: C\nsites:\n" + self.SITE)
         self.assertEqual(cats[0].sites[0].icon, "https://icons.rootiest.fyi/color/logo.svg")
 
+    def test_shortcut(self):
+        cats = self._load("categories:\n  - name: C\nsites:\n" + self.SITE + "    shortcut: A\n")
+        self.assertEqual(cats[0].sites[0].shortcut, "A")
+
     def test_errors(self):
         cases = {
             "unknown key": self.SITE + "    colour: red\n",
@@ -94,6 +99,10 @@ class GuideTests(unittest.TestCase):
         f = read_fragment(FIX / "email" / "webmail.html")
         self.assertEqual((f.slug, f.title, f.order, f.out), ("webmail", "Webmail", 10, "webmail/index.html"))
         self.assertFalse(f.body.startswith("<!--"))
+
+    def test_fragment_shortcut(self):
+        self.assertEqual(read_fragment(FIX / "email" / "webmail.html").shortcut, "Webmail")
+        self.assertEqual(read_fragment(FIX / "email" / "phone.html").shortcut, "")
 
     def test_fragment_missing_header(self):
         with tempfile.TemporaryDirectory() as d:
@@ -175,7 +184,8 @@ class BuildTests(unittest.TestCase):
 
     def test_outputs(self):
         for rel in ("index.html", "404.html", "email/index.html", "email/webmail/index.html",
-                    "email/phone/index.html", "email/404.html", "email/assets/site.css"):
+                    "email/phone/index.html", "email/404.html", "email/assets/site.css",
+                    "manifest.webmanifest", "email/manifest.webmanifest", "go/nvim/index.html"):
             self.assertTrue((self.site / rel).is_file(), rel)
         self.assertEqual(self.read("email/assets/site.css"), (ROOT / "site/assets/site.css").read_text())
 
@@ -188,7 +198,8 @@ class BuildTests(unittest.TestCase):
     def test_guide_pages_are_relative(self):
         for rel in ("email/index.html", "email/webmail/index.html", "email/phone/index.html"):
             html = self.read(rel)
-            self.assertEqual(re.findall(r'(?:href|src)="/(?!/)[^"]*"', html), [], rel)
+            # The one root-relative link: each address answers with its own app's manifest.
+            self.assertEqual(re.findall(r'(?:href|src)="/(?!/)[^"]*"', html), ['href="/manifest.webmanifest"'], rel)
             self.assertIn('href="https://rootiest.fyi/"', html)
             self.assertIn('href="https://support.rootiest.dev/"', html)
 
@@ -197,6 +208,30 @@ class BuildTests(unittest.TestCase):
         nav = re.search(r'<nav class="guide-nav".*?</nav>', html, re.S).group(0)
         self.assertEqual(re.findall(r'href="([^"]+)"', nav), ["../", "../webmail/", "../phone/"])
         self.assertIn('href="../phone/" aria-current="page"', nav)
+
+    def test_manifests(self):
+        hub = json.loads(self.read("manifest.webmanifest"))
+        self.assertEqual((hub["name"], hub["short_name"]), ("Rootiest Docs", "Docs"))
+        urls = [s["url"] for s in hub["shortcuts"]]
+        self.assertEqual(urls[0], "email/")
+        self.assertIn("go/nvim/", urls)
+        self.assertIn('url=https://nvim.rootiest.fyi"', self.read("go/nvim/index.html"))
+        self.assertIn('<link rel="manifest" href="manifest.webmanifest" />', self.read("index.html"))
+        guide = json.loads(self.read("email/manifest.webmanifest"))
+        self.assertEqual((guide["name"], guide["short_name"]), ("Rootiest Mail guide", "Mail guide"))
+        self.assertEqual(guide["shortcuts"], [{"name": "Webmail", "short_name": "Webmail", "url": "webmail/"}])
+
+    def test_check_catches_bad_manifest(self):
+        m = self.site / "email" / "manifest.webmanifest"
+        good = m.read_text()
+        try:
+            m.write_text(good.replace('"url": "webmail/"', '"url": "../"'))
+            r = subprocess.run([sys.executable, str(ROOT / "scripts" / "check.py"), "--site", str(self.site)]
+                               + self.args, capture_output=True, text=True)
+            self.assertEqual(r.returncode, 1)
+            self.assertIn("outside the scope", r.stdout)
+        finally:
+            m.write_text(good)
 
     def test_own_h1_kept_once(self):
         self.assertEqual(self.read("email/phone/index.html").count("<h1"), 1)

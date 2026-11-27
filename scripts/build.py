@@ -9,6 +9,9 @@ Usage: python3 scripts/build.py [OUTPUT_DIR] [--catalog FILE] [--guide-content D
   site/404.html             the hub's not-found page
   site/email/...            the Rootiest Mail guide, from content/email/*.html
   site/email/404.html       the guide's not-found page
+  site/manifest.webmanifest   the Rootiest Docs app, with shortcuts from sites.yaml
+  site/go/<label>/          redirect pages the app's shortcuts open
+  site/email/manifest.webmanifest  the Rootiest Mail guide app
   site/email/assets/site.css  a copy of site/assets/site.css, so the guide is
                             complete on its own at email.rootiest.fyi
 
@@ -26,7 +29,7 @@ from sitegen import config  # noqa: E402
 from sitegen.catalog.parse import CatalogError  # noqa: E402
 from sitegen.guide.fragments import FragmentError  # noqa: E402
 from sitegen.guide.shots import ShotError, dark_name  # noqa: E402
-from sitegen.pages import guide, hub, not_found  # noqa: E402
+from sitegen.pages import app, guide, hub, not_found  # noqa: E402
 
 
 def generate(catalog=None, guide_content=None, shots=None):
@@ -35,6 +38,7 @@ def generate(catalog=None, guide_content=None, shots=None):
     pages, pending = guide.build(guide_content, Path(shots) if shots else None)
     files.update(pages)
     files.update(not_found.build(with_guide=bool(pages)))
+    files.update(app.build(catalog, guide_content))
     if pages:
         files[f"{config.GUIDE_DIR}/assets/site.css"] = (config.SITE / "assets" / "site.css").read_text()
     return files, pending

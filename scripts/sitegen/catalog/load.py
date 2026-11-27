@@ -12,7 +12,7 @@ ICON_HOSTS = ("icons.rootiest.fyi", "pages.rootiest.fyi")
 LABEL = re.compile(r"^[a-z0-9]([a-z0-9-]*[a-z0-9])?$")
 HOST = re.compile(r"^([a-z0-9]([a-z0-9-]*[a-z0-9])?\.)+[a-z]{2,}$")
 SITE_KEYS = {"label", "url", "title", "description", "icon", "category", "order"}
-SITE_OPTIONAL = {"tags", "repo", "status", "links", "aliases"}
+SITE_OPTIONAL = {"tags", "repo", "status", "links", "aliases", "shortcut"}
 
 
 @dataclass
@@ -37,6 +37,7 @@ class Site:
     status: str = ""
     links: list = field(default_factory=list)
     aliases: list = field(default_factory=list)
+    shortcut: str = ""
 
     @property
     def host(self):
@@ -126,6 +127,7 @@ def _site(d, i, categories):
         status=_text(d, "status", where, required=False),
         links=links,
         aliases=aliases,
+        shortcut=_text(d, "shortcut", where, required=False),
     )
 
 
